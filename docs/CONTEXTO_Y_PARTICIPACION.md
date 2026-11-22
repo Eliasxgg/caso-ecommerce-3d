@@ -1,56 +1,59 @@
-# Contexto y participación
+# Contexto, evolución y participación
 
-## De dónde surgió el proyecto
+## Un proyecto que evolucionó entre asignaturas
 
-OceanPrint3D fue un trabajo grupal de **Comercio Electrónico**, en la **Universidad Evangélica de El Salvador**, ciclo 9 de **2026**. La idea inicial de la tienda surgió de un compañero y se desarrolló mediante actividades de clase, una propuesta de valor y un plan de mercadeo y publicidad.
+OceanPrint3D es un trabajo grupal de la **Universidad Evangélica de El Salvador**. Su evolución incluye actividades de **Comercio Electrónico** y documentos de **Formulación y Evaluación de Proyectos** de 2026.
 
-No partimos únicamente de diseñar una página. En clase trabajamos el planteamiento de la oferta, el público y el contexto del mercado salvadoreño para dar sentido a una tienda de productos y piezas personalizadas. Es un ejercicio académico de planificación; no lo presento como una validación comercial independiente.
+Los materiales de Comercio Electrónico conservan propuesta de valor y planificación de mercadeo. Los avances de Formulación y Evaluación de Proyectos desarrollan idea, entorno, organización, producción, riesgos y evaluación. Ambos contextos forman parte de la evolución; no se atribuye todo a una sola asignatura.
 
-Este caso público explica la aplicación tecnológica. Los documentos originales, el detalle de la propuesta comercial, la planificación de campañas y la configuración de precios se conservan de forma privada.
+La idea inicial surgió de un compañero. El equipo buscaba relacionar compra digital con productos físicos de impresión 3D. Hubo versiones y actividades académicas previas: las observaciones de una versión no se trasladan automáticamente al catálogo o a los resultados de otra.
 
-## Cómo se tradujo la idea a una web
+## El problema que orientó la solución
 
-| Necesidad planteada | Respuesta en la aplicación |
+Los trabajos plantean una oportunidad para **organizar la experiencia de compra**: reunir productos, características, opciones, solicitud y pedido. No se partía de afirmar que en El Salvador no existiera oferta de impresión 3D.
+
+Se estudiaron la oferta y el entorno como ejercicio académico. Esa planificación ayudó a elegir una tienda propia con información comprensible y a relacionarla con la capacidad de producción y atención del equipo.
+
+Publico la síntesis tecnológica. El análisis comercial completo, las proyecciones, la estructura de costos, los competidores estudiados y los documentos originales se conservan privados.
+
+## De la planificación al sitio
+
+| Necesidad planteada | Respuesta del proyecto |
 | --- | --- |
-| Presentar la oferta | Inicio, categorías y fichas de productos |
-| Facilitar una compra de catálogo | Carrito, checkout y pedidos con WooCommerce |
-| Recoger solicitudes personalizadas | Carga de modelo, opciones y estimación preliminar |
-| Revisar antes de fabricar | Flujo administrativo de cotizaciones y propuestas |
-| Mantener comunicación | Documentos PDF y notificaciones asociadas a los eventos |
-| Dar seguimiento al sitio | Herramientas de SEO, medición y mantenimiento |
+| Información dispersa | Catálogo, fichas y opciones en WordPress |
+| Compra organizada | Carrito, checkout y pedidos con WooCommerce |
+| Solicitudes personalizadas | Modelo, configuración, estimación y revisión |
+| Comunicación del estado | Pantallas, documentos y notificaciones |
+| Acceso desde Internet | VPS Ubuntu, Cloudflare, proxy HTTPS y servicios Docker |
+| Seguimiento del canal | SEO, medición e indexación |
+| Continuidad | Conservación de datos, configuración y respaldos |
 
-El proceso de planificación ayudó a decidir qué debía mostrar la web y qué operaciones necesitaban administración. Las metas del plan de mercadeo eran objetivos del curso; no se presentan como ventas logradas.
+Fabricación, control de calidad y entrega pertenecen a la operación física propuesta. Los documentos la planifican; la demostración web no acredita entregas ni una actividad comercial consolidada.
 
-## Mi participación
+## Mi participación y el rol académico
 
-Mi aporte principal fue **definir la presentación y el comportamiento de la web**, trabajar la configuración de WordPress y participar en la integración y el manejo guiado de la VPS. Iba proponiendo el diseño, revisando el funcionamiento y solicitando cambios conforme evolucionaba el proyecto.
+Mi participación explicada aquí se concentra en **plantear el diseño y el comportamiento del sitio, configurar WordPress y trabajar de forma guiada con la VPS y las integraciones**. Revisaba lo construido y solicitaba cambios conforme evolucionaba la tienda.
 
-También participé en la relación entre la tienda, el cotizador y los servicios que la apoyaban. Esa experiencia me acercó a Docker, Ubuntu y a la necesidad de configurar conexiones, conservar datos y revisar componentes más allá de lo visible en el navegador.
+Los avances me asignan desarrollo/administración y mantenimiento web. El segundo parcial plantea responsabilidades de plataforma, integración, respaldo y seguimiento digital. Son **responsabilidades previstas**: el documento no demuestra por sí solo que se ejecutaran todas en una operación real.
 
-Mis compañeros colaboraron con productos, precios, ideas y pruebas del cotizador. Su acceso y conocimiento de la impresora contribuyeron al trabajo del equipo. La idea y la realización se atribuyen como proyecto grupal.
+La colaboración del equipo incluyó contenido, productos, precios, diseño, conocimiento de la impresora y pruebas. Mi intervención en el diseño no sustituye los roles de los demás. La idea y la realización se mantienen como trabajo grupal.
 
-## Lo que me interesa mostrar profesionalmente
+## Acompañamiento e IA
 
-- Capacidad para relacionar una necesidad del negocio con funciones de una aplicación.
-- Práctica de diseño y administración de una tienda con WordPress/WooCommerce.
-- Familiaridad con la integración de servicios, configuración por entorno y persistencia en Docker.
-- Aprendizaje del papel del correo, los documentos, el SEO y la medición en un sitio web.
-- Interés por continuar en infraestructura y operación, reforzando la comprensión de las configuraciones que utilicé con apoyo.
+Código y parte de las configuraciones tuvieron asistencia importante de IA. Mi aporte incluyó definir necesidades, dirigir la presentación, revisar el funcionamiento y solicitar ajustes. La recuperación y adaptación local también fueron asistidas.
 
-Son aprendizajes de un proyecto académico. No asigno automáticamente un nivel avanzado a cada tecnología de la arquitectura.
+Algunas configuraciones avanzadas de Cloudflare, protección y respaldo requieren seguir reforzando mi comprensión. Presento el entorno en el que participé y lo que aprendí; no lo atribuyo a programación manual individual ni administración autónoma de cada componente.
 
-## Trabajo con IA y acompañamiento
+## Evolución técnica
 
-Utilizamos IA de forma importante para implementar código, resolver problemas y apoyar configuraciones de la VPS y de los servicios. Mi trabajo incluyó plantear necesidades, dirigir el diseño, revisar lo generado y solicitar ajustes; no fue programación manual individual de toda la solución.
+1. **Idea y formulación:** necesidad de compra, propuesta, organización y operación prevista.
+2. **Construcción:** WordPress/WooCommerce, catálogo, diseño y funcionalidades.
+3. **Despliegue original:** VPS Ubuntu, Docker, Cloudflare, proxy e integraciones.
+4. **Recuperación y adaptación:** conservación y laboratorio local con datos ficticios.
+5. **Presentación profesional:** caso público documental y código conservado aparte.
 
-La recuperación y la adaptación local posteriores también tuvieron asistencia. Algunas configuraciones avanzadas de seguridad y respaldo requieren seguir reforzando mi comprensión. Mantengo esa atribución para que el caso sea coherente con lo que puedo explicar en una entrevista.
+## Referencias del caso
 
-## Evolución
+Se revisaron los avances **Primer Examen Parcial** y **Parcial 2** de Formulación y Evaluación de Proyectos, los materiales de Comercio Electrónico, la continuidad técnica histórica, los Compose y archivos recuperados, junto con las aclaraciones del autor.
 
-1. **Planteamiento académico:** oferta, propuesta de valor y planificación comercial.
-2. **Construcción de la tienda:** diseño, catálogo, cotizador e integraciones.
-3. **Trabajo en VPS:** Ubuntu, servicios en contenedores, dominio y conexiones externas.
-4. **Adaptación local:** conservación del proyecto y distribución con datos ficticios.
-5. **Presentación profesional:** implementación privada y caso público documental.
-
-La referencia académica se contrastó con los materiales conservados de la asignatura y con lo explicado por el autor. No se publican portadas, identificadores de estudiantes ni documentos completos del equipo.
+Los PDF respaldan el planteamiento y los roles previstos; la configuración y los registros técnicos permiten reconstruir la VPS; las capturas locales muestran interfaz y funciones de demostración. No se publican portadas, identificadores estudiantiles, cuentas o documentos completos.

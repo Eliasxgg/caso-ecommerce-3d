@@ -1,11 +1,13 @@
-# Aviso académico y evidencias
+# Aviso académico y alcance
 
-OceanPrint3D se presenta como un proyecto universitario grupal y un caso de aprendizaje. Este repositorio es documental: no procesa compras, pagos ni solicitudes reales y no contiene la implementación de la aplicación.
+OceanPrint3D es un proyecto universitario grupal que evolucionó entre Comercio Electrónico y Formulación y Evaluación de Proyectos. Este repositorio documenta el planteamiento tecnológico, el entorno original en VPS, mi participación y los aprendizajes.
 
-Las capturas se seleccionaron de demostraciones locales. Los modelos de prueba, pedidos e importes mostrados se utilizan para explicar funcionamiento; no representan resultados comerciales. Las notificaciones visibles en Mailpit permanecen en un buzón interno.
+La arquitectura de Oracle Cloud, Cloudflare y los servicios se reconstruye con documentación histórica y configuración recuperada. La instancia antigua no está activa. Los diagramas no certifican disponibilidad, seguridad actual ni un despliegue en producción.
 
-La copia recuperada conserva parte de la presentación original del proyecto. La distribución privada reproducible utiliza un catálogo ficticio, claves nuevas y servicios de prueba. Los documentos distinguen esas dos fuentes de evidencia.
+Los documentos incluyen prototipos, actividades exploratorias y planificación de una futura operación. Metas, roles previstos y proyecciones no se presentan como resultados comerciales ni como prueba de ejecución de todas las tareas.
 
-Se excluyen credenciales, claves SSH, identificadores cloud, bases de datos, buzones completos, documentos personales y portadas académicas con identificadores estudiantiles. Las imágenes de interfaz no se ofrecen como un catálogo de activos reutilizables; marcas, productos y dependencias de terceros conservan sus atribuciones correspondientes.
+Las capturas son locales. Modelos, pedidos e importes de prueba no representan ventas o tarifas comerciales. Los pagos son simulados y Mailpit no envía correo a Internet. Se distingue la interfaz recuperada del laboratorio reproducible con datos ficticios.
 
-El código de la aplicación se conserva aparte. No se asigna una licencia global sobre el trabajo del equipo ni sobre recursos de terceros mediante este caso público.
+Se excluyen código, credenciales, claves de cifrado/SSH, identificadores cloud, bases, buzones completos, estudios comerciales originales, portadas y datos de integrantes. Las imágenes no son un catálogo de activos reutilizables; marcas y recursos de terceros conservan sus condiciones.
+
+El trabajo fue grupal y tuvo asistencia importante de IA en código y configuraciones. Este caso no asigna una licencia global al trabajo del equipo ni a recursos de terceros.

@@ -1,113 +1,137 @@
-# OceanPrint3D: caso de e-commerce con WordPress
+# OceanPrint3D: e-commerce e infraestructura en VPS
 
-**WordPress · WooCommerce · Docker · Ubuntu · Integración de servicios**
+**WordPress · WooCommerce · Ubuntu · Docker · Cloudflare · Integración de servicios**
 
-Proyecto académico grupal · Comercio Electrónico · UEES · 2026
+Proyecto académico grupal · UEES · Comercio Electrónico y Formulación y Evaluación de Proyectos
 
-En este proyecto participé en la construcción de una tienda de impresión 3D: presentación del negocio, catálogo, pedidos y solicitudes de piezas personalizadas mediante un cotizador. Mi interés fue aprender cómo llevar una propuesta de clase a una solución web y cómo conectar los servicios necesarios para operarla.
+En OceanPrint3D participé en el diseño, la configuración y la integración de una tienda de impresión 3D alojada en una **VPS Ubuntu de Oracle Cloud**. La solución reunía catálogo, pedidos y solicitudes personalizadas, con Cloudflare delante del sitio y servicios de datos, cotización, correo y protección.
 
-El trabajo partió de una propuesta de valor y un plan de mercadeo elaborados en clase para el contexto de El Salvador. Aquí me concentro en la solución tecnológica y en lo que aprendí; la planificación comercial y la implementación se conservan de forma privada.
+Este caso presenta primero **cómo estaba organizado el proyecto en la VPS y qué aprendí al trabajar con él**. La adaptación a Docker en Windows se explica después como una forma de conservarlo y demostrarlo localmente. La antigua instancia ya no está activa.
 
-![Portada de OceanPrint3D](assets/01-inicio.jpg)
+![Interfaz conservada en una demostración local](assets/01-inicio.jpg)
 
-## Del planteamiento a la solución
+## De la idea a la tienda
 
-Buscábamos que una persona pudiera conocer la oferta, consultar productos y solicitar una pieza personalizada desde un mismo sitio. Para esa segunda opción, necesitábamos reunir el modelo, sus características y la cantidad solicitada, y dar al equipo la oportunidad de revisar la petición antes de continuar con el pedido.
+El proyecto evolucionó entre actividades de Comercio Electrónico y trabajos de Formulación y Evaluación de Proyectos. En estos últimos desarrollamos el problema, la propuesta de valor, el análisis del entorno y la planificación de la operación para el contexto salvadoreño.
 
-Elegimos **WordPress y WooCommerce** como base para la tienda y conectamos un servicio especializado para la cotización. Esto permitió trabajar tanto la experiencia del cliente como la administración del catálogo, los pedidos, los documentos y las notificaciones.
+La necesidad planteada fue **centralizar información del producto, opciones y pedido**, para que la persona comprendiera qué estaba comprando sin depender de conversaciones dispersas. Esa idea orientó el sitio y su administración.
 
-### Recorrido de compra
+Los trabajos distinguen el prototipo de la futura operación comercial. Aquí explico la solución tecnológica y el aprendizaje; los estudios completos, las proyecciones, los costos y la estrategia comercial se conservan de forma privada.
 
-El cliente tiene dos entradas. La compra de catálogo avanza al carrito; una pieza personalizada pasa primero por estimación y revisión.
+## Arquitectura original en la VPS
+
+El recorrido web empezaba en el navegador, pasaba por **Cloudflare** y llegaba al proxy de la VPS. **Nginx Proxy Manager** encaminaba la solicitud a WordPress; WooCommerce gestionaba el comercio y el cotizador atendía el procesamiento especializado.
 
 ```mermaid
 flowchart TD
-    A[Inicio de la tienda] --> B{Qué necesita el cliente}
-    B -->|Producto disponible| C[Explorar catálogo y elegir producto]
-    B -->|Pieza personalizada| D[Cargar modelo y configurar opciones]
-    D --> E[Consultar estimación preliminar]
-    E --> F[Enviar solicitud al equipo]
-    F --> G{Revisión de la solicitud}
-    G -->|Requiere cambios| D
-    G -->|Aprobada o propuesta aceptada| H[Continuar con el pedido]
-    C --> I[Carrito y checkout]
-    H --> I
-    I --> J[Pago y confirmación]
-    J --> K[Pedido, documento y notificación]
+    CLIENTE["Cliente: navegador"] -->|HTTPS| CF["Cloudflare: proxy, CDN y reglas de acceso"]
+    CF -->|HTTPS al origen| PROXY["Nginx Proxy Manager"]
+    subgraph VPS["Oracle Cloud: VPS Ubuntu con Docker"]
+      PROXY --> WP["WordPress y WooCommerce"]
+      WP -. "Protección en la aplicación" .-> WF["Wordfence"]
+      WP --> DB[(MariaDB)]
+      WP --> CACHE[(Redis)]
+      WP --> API["Cotizador Python / FastAPI"]
+      API --> AV["ClamAV: inspección de modelos"]
+      API --> SLICE["PrusaSlicer: estimación de impresión"]
+    end
+    WP -. "Integración de pago" .-> PAGO["Wompi El Salvador"]
+    WP --> SMTP["Fluent SMTP y Brevo"]
+    SMTP --> CORREO["Correo del cliente y documentos"]
+    WP -. "SEO y medición" .-> GOOGLE["Site Kit, Analytics y Search Console"]
 ```
 
-En la demostración local, el pago se simula y las notificaciones se reciben en un buzón interno.
+**Wordfence y Fluent SMTP son plugins de WordPress**, no contenedores independientes. El visor **Three.js** se ejecutaba en el navegador. El esquema omite direcciones, claves y detalles de cuentas.
 
-## Qué integra el proyecto
-
-| Área | Función dentro de la tienda | Aprendizaje aplicado |
+| Área | Componentes originales | Función y aprendizaje |
 | --- | --- | --- |
-| Presentación y catálogo | Inicio, categorías, fichas y navegación | Organizar contenido, diseño y recorrido del cliente con WordPress |
-| Comercio electrónico | Carrito, checkout, cuentas y estados de pedidos | Configurar WooCommerce y relacionar la compra con su administración |
-| Cotización personalizada | Archivo 3D, visor y opciones de impresión | Integrar la web con un servicio de cálculo y presentar una estimación |
-| Revisión administrativa | Solicitudes y propuestas antes de comprar | Distinguir una estimación automática de una decisión del equipo |
-| Documentos y correo | Cotizaciones, facturas y notificaciones | Conectar los eventos del negocio con PDF y transporte SMTP |
-| Operación del sitio | Base de datos, caché y servicios en contenedores | Entender dependencias, persistencia y configuración por entorno |
-| Visibilidad y mantenimiento | SEO, medición y herramientas de protección | Reconocer que publicar una web también requiere seguimiento y mantenimiento |
+| Acceso del cliente | Dominio, Cloudflare y HTTPS | Relacionar DNS, proxy, certificados y origen |
+| Entrada a la VPS | Nginx Proxy Manager | Encaminamiento y separación del acceso público de los servicios internos |
+| Tienda y administración | WordPress, WooCommerce y tema visual | Páginas, categorías, productos, cuentas, carrito y pedidos |
+| Protección | Wordfence y controles de servidor/Cloudflare | Distinguir capas y responsabilidades |
+| Datos y caché | MariaDB y Redis | Persistencia y caché de objetos |
+| Personalización | Plugin, FastAPI, Three.js, PrusaSlicer y ClamAV | Archivo, visualización, análisis y estimación con revisión del equipo |
+| Comunicación | PDF, Fluent SMTP y Brevo | Relacionar solicitudes y pedidos con documentos y notificaciones |
+| Pago | Plugin Wompi El Salvador | Integrar pedido y proveedor, sin atribuir cobros reales a las pruebas |
+| Visibilidad | Rank Math, Site Kit, Analytics y Search Console | SEO, medición e indexación |
+| Continuidad | Respaldos programados y copias cifradas externas | Comprender qué conservar y qué requiere una recuperación |
 
-![Cotizador integrado con vista del modelo y opciones de impresión](assets/03-cotizador.jpg)
+[Arquitectura original, protección y respaldos](docs/ARQUITECTURA.md#arquitectura-original-en-vps).
 
-## Tecnologías y decisiones
+## Recorrido del cliente y operación
 
-### Aplicación e integración
-
-- **WordPress y WooCommerce:** base del sitio, catálogo y gestión de pedidos.
-- **Python/FastAPI, Three.js y PrusaSlicer:** servicio de cotización, visualización del modelo y estimación de impresión, con asistencia de IA en su implementación.
-- **MariaDB y Redis:** almacenamiento de la aplicación y caché de objetos.
-- **ClamAV:** inspección de archivos recibidos por el cotizador.
-- **Docker Compose y Ubuntu:** organización de los servicios y práctica de operación en VPS.
-
-### Herramientas del sitio original
-
-Trabajamos con **Fluent SMTP y Brevo** para configurar el correo, **Wordfence** para protección del sitio, **Rank Math SEO** para sus ajustes de posicionamiento y **Google Site Kit / Search Console** para conocer el proceso de medición e indexación. También integramos el plugin de **Wompi El Salvador** como parte del proyecto original.
-
-Estas herramientas me ayudaron a ver el e-commerce como un conjunto de servicios. Instalar un plugin es solo un paso: también hay que entender su configuración, sus conexiones y su mantenimiento. Las métricas dependen de la recopilación y actualización de cada servicio; no las presento como información instantánea ni como resultados comerciales obtenidos.
-
-### VPS y trabajo local
-
-La versión original se alojaba en una **VPS Ubuntu de Oracle Cloud**, con dominio y servicios externos. La versión local conserva la integración en Docker, utiliza datos ficticios y sustituye el cobro y la entrega externa de correo por servicios de demostración.
+La compra de catálogo y la solicitud personalizada comparten el registro del pedido, pero la segunda requiere revisión.
 
 ```mermaid
-flowchart LR
-    A[Navegador] --> B[Nginx]
-    subgraph Docker[Entorno local con Docker Compose]
-      B --> C[WordPress y WooCommerce]
-      C --> D[(MariaDB)]
-      C --> E[(Redis)]
-      C --> F[Servicio de cotización]
-      F --> G[Análisis de archivos y laminado]
-      C --> H[Mailpit: correo de pruebas]
+flowchart TD
+    A["Visitar la tienda"] --> B{"Tipo de solicitud"}
+    B -->|Catálogo| C["Producto y opciones"]
+    B -->|Modelo personalizado| D["Modelo 3D y estimación"]
+    D --> E["Revisión y propuesta del equipo"]
+    E -->|Aprobación y aceptación| F["Carrito y pedido"]
+    E -->|Ajustar solicitud| D
+    C --> F
+    F --> G["Integración de pago y confirmación"]
+    G --> H["Documento y notificación"]
+    H -. "Operación física propuesta" .-> I["Programar fabricación, revisar y entregar"]
+```
+
+Los documentos de clase relacionan compra digital con fabricación bajo demanda, calidad y entrega. Esa última etapa es el **proceso operativo propuesto**; las capturas no prueban entregas comerciales. La estimación tampoco sustituye la aprobación del equipo.
+
+![Cotizador integrado: visor y opciones de impresión](assets/03-cotizador.jpg)
+
+## Mi participación y lo que aprendí
+
+La idea inicial surgió de un compañero y la realización fue grupal. Mi aporte se concentró en **definir el diseño y el comportamiento de la web, configurar WordPress y participar en la integración y el trabajo guiado con la VPS**. Mis compañeros aportaron contenido, precios, conocimiento de la impresora y pruebas.
+
+Los trabajos de Formulación y Evaluación de Proyectos también me asignan desarrollo y mantenimiento web. Distingo ese rol planificado de las tareas realizadas y explicadas aquí.
+
+- **Construcción y administración:** páginas, categorías, fichas y recorrido entre carrito, pedido y administración.
+- **Infraestructura e integración:** Ubuntu, Docker Compose, redes, volúmenes y conexiones entre aplicación, datos y cotizador.
+- **Acceso y protección:** recorrido Cloudflare–proxy–WordPress y controles del servidor, aplicación y archivos.
+- **Correo y documentos:** Fluent SMTP/Brevo y relación entre estados, mensajes y PDF.
+- **SEO y medición:** Rank Math, Site Kit y Search Console, sus conexiones y los tiempos de recopilación e indexación.
+- **Continuidad:** relación entre configuración, respaldos y recuperación.
+- **Criterio de negocio:** traducir una propuesta a funciones y distinguir solicitud, estimación, aprobación y pedido.
+
+Utilizamos **IA de forma importante en implementación y configuraciones**. Mi participación incluyó plantear necesidades, dirigir el diseño, revisar resultados y solicitar ajustes; no presento el trabajo como programación manual individual. Algunas configuraciones avanzadas requieren seguir reforzando mi comprensión.
+
+[Contexto y participación](docs/CONTEXTO_Y_PARTICIPACION.md) · [Resultados y aprendizajes](docs/RESULTADOS_Y_APRENDIZAJES.md)
+
+## Adaptación local para conservar y demostrar el proyecto
+
+El laboratorio conserva la lógica de la tienda y el cotizador en Docker Desktop. Genera datos ficticios, usa claves locales y reemplaza las conexiones comerciales por servicios de prueba. No reproduce Cloudflare ni vincula cuentas de producción.
+
+```mermaid
+flowchart TD
+    PC["Navegador en la PC"] --> WEB["Nginx local: localhost"]
+    subgraph DOCKER["Docker Desktop: oceanprint-local"]
+      WEB --> WP["WordPress y WooCommerce: datos ficticios"]
+      WP --> DB[(MariaDB)]
+      WP --> CACHE[(Redis)]
+      WP --> API["Cotizador Python / FastAPI"]
+      API --> AV["ClamAV"]
+      API --> SLICE["PrusaSlicer"]
+      WP -->|SMTP interno| MAIL["Mailpit: mensajes y PDF de prueba"]
+      WP -. "Checkout" .-> PAGO["Pasarela simulada: sin cobro"]
+      WEB --> MAIL
     end
 ```
 
-[Arquitectura original y local](docs/ARQUITECTURA.md) · [Recorrido visual completo](docs/RECORRIDO_VISUAL.md)
+| Cambio respecto a la VPS | Finalidad local |
+| --- | --- |
+| Dominio/Cloudflare/HTTPS → localhost | Ejecutar la demostración desde una PC |
+| Wompi → pasarela simulada | Recorrer pedidos sin tarjeta ni cobro |
+| Fluent SMTP/Brevo → Mailpit | Revisar mensajes y adjuntos sin enviarlos a Internet |
+| Datos históricos → catálogo y cuentas ficticias | Instalación reutilizable sin compartir datos privados |
+| Configuración VPS → secretos locales nuevos | Separar accesos por entorno |
 
-## Mi participación y aprendizajes
-
-La idea inicial surgió de un compañero y el trabajo fue grupal. Mi aporte se concentró en **definir el diseño y el comportamiento de la web, configurar WordPress y participar en la integración y el trabajo con la VPS**. Mis compañeros aportaron productos, precios, conocimiento de la impresora y pruebas del cotizador.
-
-Lo que más rescato de este proyecto es haber practicado:
-
-- **Construcción y administración de una tienda:** organizar páginas, categorías, productos y el recorrido de compra; relacionarlos con pedidos y documentos.
-- **Integración de servicios:** entender cómo WordPress se comunica con el cotizador, la base de datos y el correo, y por qué una web necesita más que una interfaz.
-- **Infraestructura:** trabajar con una VPS Ubuntu, Docker Compose, configuración, volúmenes y dependencias entre servicios.
-- **Correo, SEO y medición:** conocer la configuración SMTP, los ajustes SEO y la relación del sitio con Site Kit y Search Console.
-- **Recuperación y adaptación:** separar datos, accesos y servicios externos para conservar una demostración que pueda ejecutarse en una PC.
-- **Criterio de negocio:** distinguir catálogo, solicitud, estimación, aprobación y pedido, en lugar de tratarlos como una sola operación.
-
-Utilizamos IA de forma importante para implementar código, resolver problemas y apoyar configuraciones. La recuperación local también fue asistida. Presento mi participación en el diseño, la configuración y la revisión del trabajo; el detalle de responsabilidades está en [contexto y participación](docs/CONTEXTO_Y_PARTICIPACION.md).
-
-Este caso refleja mi interés por **infraestructura, operación de sistemas e integración de soluciones para un negocio**. [Resultados y aprendizajes](docs/RESULTADOS_Y_APRENDIZAJES.md) desarrolla estas ideas y las posibles mejoras.
+El grupo final es **`oceanprint-local`**: tienda en el puerto **8084** y correo en **8085**. [Detalle de la adaptación](docs/ARQUITECTURA.md#adaptación-local).
 
 ## Recorrido visual
 
-La galería reúne **inicio, catálogo, cotizador, pedido y notificaciones**. Permite seguir la solución desde la tienda hasta su operación sin necesitar acceso a las cuentas ni al código.
+La galería muestra **inicio, catálogo, cotizador y pedido** con la interfaz conservada. Al final presenta el **buzón local**, como evidencia de la adaptación. Las capturas se tomaron en local con operaciones de prueba.
 
-[Ver las cinco capturas y su explicación](docs/RECORRIDO_VISUAL.md).
+[Ver las cinco capturas explicadas](docs/RECORRIDO_VISUAL.md).
 
-> **Proyecto académico.** Las capturas corresponden a demostraciones locales, con operaciones de prueba. La antigua VPS no se presenta como un servicio activo. Este repositorio contiene documentación e imágenes seleccionadas; el código, los documentos comerciales, los datos y los accesos se conservan aparte. [Aviso académico](AVISO_ACADEMICO.md).
+> **Caso académico y documental.** Este repositorio no opera una tienda pública ni contiene código, bases, accesos o documentos comerciales completos. Los esquemas de la VPS describen el entorno histórico; las pruebas locales no acreditan cobros reales. [Aviso académico](AVISO_ACADEMICO.md).

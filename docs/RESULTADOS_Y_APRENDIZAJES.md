@@ -1,57 +1,71 @@
-# Resultados y aprendizajes
+# Resultados y aprendizajes del proyecto
 
-## Qué resultado tuvo el proyecto
+## Qué me permitió construir y entender
 
-El resultado fue una tienda académica que reúne catálogo, compra y solicitud de piezas personalizadas, con un panel para administrar la operación. La integración permitió conectar la experiencia del cliente con cotización, pedido, documentos y correo.
+El resultado tecnológico fue una tienda académica desplegada en VPS, con catálogo, pedidos y cotizador integrado. El trabajo me acercó a la operación de una aplicación accesible desde Internet: dominio, Cloudflare, HTTPS, proxy, WordPress, datos y servicios externos.
 
-Más allá de la apariencia de la web, el aprendizaje principal fue entender que un e-commerce depende de varias partes que deben funcionar juntas. WordPress es el centro del sitio, pero necesita datos, archivos, conexiones y herramientas de seguimiento.
+La formulación aportó otra perspectiva: cada función debía relacionarse con información que necesita el cliente o con una actividad del equipo. Una tienda también requiere pensar en solicitudes, confirmaciones, comunicación, producción y seguimiento.
 
-## Lo que aprendí al construirlo
+## Aprendizajes del entorno original
 
-| Área | Aprendizaje | Relación con el proyecto |
+| Área | Qué aprendí a relacionar | Aplicación |
 | --- | --- | --- |
-| WordPress y diseño | Organizar páginas, navegación, categorías y contenido | Convertir una propuesta de clase en una experiencia de tienda |
-| WooCommerce | Relacionar catálogo, carrito, checkout y estados de pedidos | Entender el recorrido entre la compra y su administración |
-| Integración | Reconocer qué hace la web y qué se delega a un servicio | Conectar el cotizador y presentar sus resultados en la tienda |
-| Operación | Trabajar con Ubuntu, Docker Compose, configuración y volúmenes | Entender servicios, dependencias y conservación de datos |
-| Correo | Relacionar eventos de la tienda con transporte SMTP y adjuntos | Trabajar con Fluent SMTP/Brevo en el proyecto y Mailpit en local |
-| SEO | Conocer ajustes del sitio y el proceso de indexación | Trabajar con Rank Math y conocer la vinculación con Search Console |
-| Medición | Entender que una web puede conectarse con herramientas de métricas | Acercamiento a Google Site Kit y a la lectura de información del sitio |
-| Protección | Conocer herramientas del sitio y revisión de archivos | Wordfence en el entorno original y ClamAV en el cotizador |
-| Recuperación | Distinguir respaldo histórico de instalación reutilizable | Separar datos privados, claves y servicios de demostración |
+| Propuesta y experiencia | Convertir una necesidad en funciones y contenido | Catálogo, opciones y recorrido de pedido |
+| WordPress/WooCommerce | Configurar páginas y conectarlas con administración | Productos, cuentas, carrito, checkout y estados |
+| Dominio y acceso | Distinguir DNS, proxy externo, HTTPS y origen | Cloudflare y Nginx Proxy Manager |
+| Servicios en VPS | Reconocer dependencias, redes, configuración y persistencia | Ubuntu, Compose, MariaDB, Redis y cotizador |
+| Protección | Separar borde, servidor, aplicación y archivos | Cloudflare, controles Ubuntu, Wordfence y ClamAV |
+| Integración | Distinguir visualización, estimación y decisión | Three.js, servicio Python y revisión del equipo |
+| Comunicación | Relacionar eventos con mensajes y documentos | Fluent SMTP, Brevo y PDF |
+| SEO y seguimiento | Separar contenido, indexación y medición | Rank Math, Site Kit, Analytics y Search Console |
+| Continuidad | Comprender qué conservar y cómo recuperarlo | Datos, archivos, configuración y copias cifradas |
 
-La implementación tuvo asistencia importante de IA. Estos aprendizajes corresponden a mi participación en el diseño, configuración, integración y revisión; no implican que haya programado todos los componentes ni que administre cada tecnología de forma independiente.
+Son aprendizajes de diseño, configuración, integración y revisión con acompañamiento. No equivalen a dominio avanzado de cada tecnología.
 
 ## Decisiones que ahora puedo explicar mejor
 
-### Una estimación no es una aprobación
+### El acceso al sitio tiene varias capas
 
-La pieza personalizada necesita reunir información antes de convertirse en un pedido. Mostrar una estimación ayuda al cliente, pero no elimina la revisión del equipo. Esto me permitió distinguir cálculo, propuesta y confirmación dentro de un proceso de negocio.
+Una visita pasa por el dominio y Cloudflare antes de llegar al proxy y a la aplicación. Esto me ayudó a entender por qué un problema de acceso no siempre se resuelve cambiando WordPress y por qué la administración requiere controles distintos del recorrido del cliente.
 
-### El correo es parte del recorrido
+### La protección tiene responsabilidades diferentes
 
-Una solicitud o un pedido también genera información fuera de la pantalla. Trabajar con SMTP y documentos me ayudó a relacionar el estado de la operación con el mensaje que recibe el cliente y con el documento que debe acompañarlo.
+Wordfence protege la aplicación; no reemplaza los controles del servidor o del origen. El tratamiento de archivos es otra responsabilidad. Conocí esas capas mediante configuración asistida, sin atribuirme una especialización en seguridad.
 
-### SEO y medición tienen procesos propios
+### Una estimación no sustituye una revisión
 
-Conocer Rank Math, Site Kit y Search Console me mostró que publicar la web no termina el trabajo. También hay que preparar el contenido para buscadores, conocer el proceso de indexación y consultar métricas cuando estén disponibles. No presento esa vinculación como garantía de posicionamiento ni como medición instantánea.
+Modelo y parámetros orientan una solicitud, pero el equipo debe revisar viabilidad y condiciones antes de comprometer fabricación. El recorrido distingue cálculo, propuesta y pedido.
 
-### La infraestructura sostiene la aplicación
+### La comunicación forma parte de la operación
 
-El uso de contenedores me permitió ver responsabilidades distintas: aplicación, base, caché, cálculo, archivos y correo. La adaptación local hizo visible por qué los datos deben persistir y por qué una conexión que funciona en VPS puede necesitar otra configuración en la PC.
+Pantalla, correo y documento deben expresar el mismo estado. La configuración SMTP y los PDF me ayudaron a relacionar las acciones de la tienda con lo que recibe el cliente.
 
-## Mejoras que plantearía para una siguiente versión
+### Medir, indexar y vender son procesos distintos
 
-- **Hacer más claro el siguiente paso de una cotización:** indicar qué está pendiente de revisión y cómo continuar cuando el equipo responda.
-- **Dar seguimiento al recorrido:** medir visitas, consultas y solicitudes con una configuración adecuada, y después relacionarlas con pedidos confirmados.
-- **Mantener comunicación coherente:** revisar que pantalla, correo y PDF expresen el mismo estado y las mismas condiciones.
-- **Documentar operación y mantenimiento:** conexiones, respaldo, restauración y actualización de servicios para reducir dependencia de configuraciones recordadas de memoria.
-- **Contrastar estimaciones con fabricación:** si se retoma la operación, comparar cálculos con piezas realmente producidas antes de ajustar condiciones comerciales.
+Las herramientas de Google y los ajustes SEO ayudan a observar y preparar el canal. No prueban demanda, ventas ni rentabilidad. Los documentos académicos también distinguen proyecciones y actividades exploratorias de resultados comerciales.
 
-Son propuestas de mejora, no resultados de campañas o experimentos realizados con clientes.
+### Recuperar exige conocer datos y configuración
 
-## Alcance de la demostración
+Los respaldos contemplaban más que archivos visibles. La recuperación reforzó mi comprensión de persistencia y separación entre datos, código, configuración y accesos.
 
-Las capturas muestran la tienda recuperada y el laboratorio reproducible. Las pruebas locales incluyeron catálogo, cálculo de un modelo de ejemplo, solicitud y revisión, pedido simulado, documentos PDF y correo en Mailpit. El detalle operativo se conserva con la implementación privada.
+## Qué aportó la formulación académica
 
-La demostración no procesa cobros ni envía mensajes a Internet. No presenta ventas obtenidas, métricas reales de clientes, pruebas físicas de impresión ni un servicio público actualmente activo. Los plugins y servicios del entorno original se describen como contexto y aprendizaje; no se afirma que todas sus cuentas estén conectadas en la copia local.
+Los avances trabajaron problema, alternativas, entorno, roles, riesgos y operación bajo demanda. Ayudaron a situar la web dentro de un proyecto con producción física y atención.
+
+Las responsabilidades previstas y las metas financieras se mantienen como planificación. Las actividades exploratorias de los documentos corresponden a versiones anteriores y operaciones simuladas; no se convierten aquí en ventas o validación del sitio posterior.
+
+## Mejoras para una siguiente etapa
+
+- **Operación:** documentar conexiones, mantenimiento y responsables para reducir dependencia de configuraciones recordadas de memoria.
+- **Continuidad:** ensayar una restauración completa en un entorno aislado, además de comprobar archivos y bases individuales.
+- **Experiencia:** aclarar qué necesita aprobación y cuál es el siguiente paso del cliente.
+- **Seguimiento:** relacionar el recorrido con pedidos cuando exista una operación con datos propios, respetando privacidad y consentimiento.
+- **Producción:** contrastar estimaciones con resultados físicos antes de ajustar condiciones comerciales.
+
+Son propuestas, no mejoras comerciales ya medidas.
+
+## Papel secundario de la adaptación local
+
+La adaptación permite revisar catálogo, cotizador, solicitud, pedido simulado, PDF y correo interno desde una PC. Reemplaza pago y SMTP externos por servicios de prueba y utiliza datos ficticios.
+
+Recuperación y pruebas fueron asistidas por IA. Las capturas no acreditan VPS activa, cobros, entregas ni reproducción completa de la infraestructura histórica en Windows.

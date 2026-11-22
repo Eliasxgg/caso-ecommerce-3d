@@ -1,54 +1,52 @@
-# Recorrido visual de la tienda
+# Recorrido visual de OceanPrint3D
 
-Este recorrido muestra cómo se relacionan la experiencia del cliente y las funciones de operación. Las imágenes se tomaron en demostraciones locales con operaciones de prueba. Las cuatro primeras conservan la presentación del sitio recuperado; el buzón corresponde a la distribución de laboratorio.
+La galería presenta la experiencia del sitio construido para la VPS. **Las capturas se obtuvieron después en una copia local recuperada**: conservan su interfaz, pero no muestran una VPS actualmente activa. Al final aparece el correo de la adaptación local.
 
-## E-commerce
+## 1. Inicio: presentar y orientar
 
-### Inicio: presentar la oferta y orientar al visitante
+La portada introduce la tienda y permite comenzar por catálogo o solicitud personalizada. La estructura, navegación y presentación forman parte del diseño del proyecto.
 
-La portada introduce la tienda y da acceso al catálogo y a las solicitudes personalizadas. Trabajé la identidad visual, la distribución del contenido y la navegación como parte de mi participación en el proyecto.
+![Inicio de la copia recuperada](../assets/01-inicio.jpg)
 
-![Inicio de OceanPrint3D](../assets/01-inicio.jpg)
+En el despliegue original, el cliente llegaba mediante Cloudflare y el proxy HTTPS de la VPS. [Ver la arquitectura](ARQUITECTURA.md#arquitectura-original-en-vps).
 
-### Catálogo: organizar productos y facilitar la elección
+## 2. Catálogo: facilitar la elección
 
-Las tarjetas reúnen imagen, precio y categoría. Esta vista permite explicar el trabajo de configuración de productos y navegación con WordPress y WooCommerce.
+Imagen, categoría y precio ayudan a comprender la oferta. WordPress/WooCommerce conectan esa presentación con la administración.
 
-![Catálogo de productos](../assets/02-catalogo.jpg)
+![Catálogo de la versión recuperada](../assets/02-catalogo.jpg)
 
-La captura conserva elementos del catálogo académico. La instalación nueva utiliza productos ficticios; las marcas o personajes visibles no implican afiliación ni se ofrecen como recursos descargables.
+Se conserva contenido académico de una versión del sitio. Marcas y personajes visibles no implican afiliación ni se ofrecen como recursos descargables. La instalación nueva genera un catálogo ficticio.
 
-## Integración y operación
+## 3. Cotizador: integrar una solicitud
 
-### Cotizador: conectar una solicitud con un servicio especializado
+El visor muestra el modelo y sus opciones. La web conecta con el servicio especializado para presentar una estimación y reunir información que revisará el equipo.
 
-El visor permite consultar el modelo y ajustar opciones de impresión. La estimación acompaña la solicitud que revisará el equipo antes de continuar con el pedido.
+![Modelo 3D, opciones y estimación](../assets/03-cotizador.jpg)
 
-![Cotizador, modelo 3D y configuración](../assets/03-cotizador.jpg)
+El modelo es un cubo sintético y el cálculo procede de la integración WordPress–cotizador. El importe es de demostración, no una tarifa publicada o venta. La visualización en el navegador y el análisis del backend son funciones diferentes.
 
-Se utilizó un cubo sintético y parámetros de ejemplo. El cálculo procede de la integración WordPress–cotizador. El importe visible explica la función de la interfaz; no se publica como tarifa comercial ni como venta.
+## 4. Pedido: confirmar la operación digital
 
-### Pedido: relacionar la compra con su confirmación
-
-La pantalla reúne productos, importes, envío, método de pago y acceso al documento. Permite seguir la relación entre checkout y pedido dentro de WooCommerce.
+La confirmación reúne productos, importes, envío y acceso al documento. Permite explicar el vínculo entre checkout y pedido.
 
 <details>
-<summary>Ver la confirmación completa de un pedido simulado</summary>
+<summary>Ver el pedido simulado completo</summary>
 
-![Pedido simulado con datos ficticios](../assets/04-pedido.jpg)
+![Pedido con datos ficticios y pago de prueba](../assets/04-pedido.jpg)
 
 </details>
 
-La operación utiliza datos ficticios y una pasarela de prueba sin cobro real.
+El entorno original incluía Wompi; esta captura usa pago simulado y no representa un cobro de ese proveedor. Fabricación, calidad y entrega pertenecen al proceso operativo propuesto, no a lo demostrado por el recibo.
 
-### Correo y documentos: continuar el proceso fuera de la web
+## 5. Adaptación local: notificaciones y PDF
 
-Las notificaciones conectan los eventos de la aplicación con mensajes y PDF. En la VPS trabajamos con Fluent SMTP y Brevo; en local, Mailpit permite revisar el contenido sin enviar mensajes a buzones externos.
+En la VPS se trabajó con Fluent SMTP y Brevo. Para demostrar el recorrido en una PC, la entrega externa se sustituyó por Mailpit.
 
-![Notificaciones y adjuntos en Mailpit](../assets/05-smtp.jpg)
+![Mensajes y documentos en Mailpit](../assets/05-smtp.jpg)
 
-## Qué aporta este recorrido al caso
+El buzón muestra solicitudes y pedidos con adjuntos. Los destinatarios son ficticios y el correo permanece en Docker; no muestra una bandeja Brevo ni entrega a Internet.
 
-Las pantallas permiten ver diseño, configuración de una tienda e integración de servicios. El contexto de SEO, medición y protección se explica en [arquitectura](ARQUITECTURA.md); no se añaden capturas de cuentas externas, claves o información de terceros.
+## Completar la lectura
 
-[Mi participación](CONTEXTO_Y_PARTICIPACION.md) · [Resultados y aprendizajes](RESULTADOS_Y_APRENDIZAJES.md) · [Volver al caso](../README.md)
+Los [dos diagramas de arquitectura](ARQUITECTURA.md) separan VPS y local. El [contexto y la participación](CONTEXTO_Y_PARTICIPACION.md) distinguen asignaturas, rol previsto y trabajo realizado. Los [aprendizajes](RESULTADOS_Y_APRENDIZAJES.md) relacionan el entorno con mi experiencia.
