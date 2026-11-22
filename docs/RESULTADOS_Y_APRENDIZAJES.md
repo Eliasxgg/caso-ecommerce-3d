@@ -1,45 +1,57 @@
-# Resultados, decisiones y aprendizajes
+# Resultados y aprendizajes
 
-## Evidencia funcional
+## Qué resultado tuvo el proyecto
 
-Las pruebas se realizaron sobre demostraciones locales. Distingo la copia recuperada del proyecto de la distribución nueva, que genera datos ficticios y no importa la base histórica.
+El resultado fue una tienda académica que reúne catálogo, compra y solicitud de piezas personalizadas, con un panel para administrar la operación. La integración permitió conectar la experiencia del cliente con cotización, pedido, documentos y correo.
 
-| Comprobación | Evidencia observada | Qué permite concluir |
+Más allá de la apariencia de la web, el aprendizaje principal fue entender que un e-commerce depende de varias partes que deben funcionar juntas. WordPress es el centro del sitio, pero necesita datos, archivos, conexiones y herramientas de seguimiento.
+
+## Lo que aprendí al construirlo
+
+| Área | Aprendizaje | Relación con el proyecto |
 | --- | --- | --- |
-| Instalación desde volúmenes vacíos | WordPress 7.1.5, dependencias, seis productos ficticios y cuatro categorías | La distribución puede crear un laboratorio nuevo sin restaurar datos del sitio antiguo |
-| Geometría de prueba | Cubo sintético de 20 × 20 × 20 mm aceptado y analizado | El servicio recibe y procesa un modelo de prueba; no valida todo archivo posible |
-| Laminado y precio | Perfil A1 Mini adaptado, 3.63 g y unos 10.27 minutos por pieza; 15 copias por $3.60 | Hay conexión entre geometría, configuración, estimación y precio de ejemplo |
-| Solicitud y revisión | Solicitud guardada en el flujo administrativo; aprobación comprobada en la copia recuperada | El proceso contempla intervención del equipo antes de continuar con la compra |
-| Compra de prueba | Checkout de bloques recorrido en la copia recuperada; pago simulado invocado desde WooCommerce en la distribución limpia | El flujo local de pedido puede llegar a Procesando sin realizar un cobro |
-| Factura | PDF generado y un adjunto de factura comprobado para el correo del cliente | El flujo de pedido puede producir y adjuntar el documento |
-| Correo | Mensajes de cotización y pedido recibidos en Mailpit, con PDF adjunto | El transporte SMTP local y los adjuntos funcionan en las pruebas |
-| Conservación y operación | Pedido/factura conservados al recrear contenedores en la copia recuperada; instalador repetido conserva la instalación limpia | Los datos de prueba no dependen exclusivamente de la vida de un contenedor |
+| WordPress y diseño | Organizar páginas, navegación, categorías y contenido | Convertir una propuesta de clase en una experiencia de tienda |
+| WooCommerce | Relacionar catálogo, carrito, checkout y estados de pedidos | Entender el recorrido entre la compra y su administración |
+| Integración | Reconocer qué hace la web y qué se delega a un servicio | Conectar el cotizador y presentar sus resultados en la tienda |
+| Operación | Trabajar con Ubuntu, Docker Compose, configuración y volúmenes | Entender servicios, dependencias y conservación de datos |
+| Correo | Relacionar eventos de la tienda con transporte SMTP y adjuntos | Trabajar con Fluent SMTP/Brevo en el proyecto y Mailpit en local |
+| SEO | Conocer ajustes del sitio y el proceso de indexación | Trabajar con Rank Math y conocer la vinculación con Search Console |
+| Medición | Entender que una web puede conectarse con herramientas de métricas | Acercamiento a Google Site Kit y a la lectura de información del sitio |
+| Protección | Conocer herramientas del sitio y revisión de archivos | Wordfence en el entorno original y ClamAV en el cotizador |
+| Recuperación | Distinguir respaldo histórico de instalación reutilizable | Separar datos privados, claves y servicios de demostración |
 
-El cubo, los importes y los pedidos son fixtures y operaciones de demostración. No son ventas, ingresos, resultados de marketing ni validación de una tarifa de impresión.
+La implementación tuvo asistencia importante de IA. Estos aprendizajes corresponden a mi participación en el diseño, configuración, integración y revisión; no implican que haya programado todos los componentes ni que administre cada tecnología de forma independiente.
 
-## Qué aprendí del proceso
+## Decisiones que ahora puedo explicar mejor
 
-**Una estimación necesita contexto.** Escala, relleno, capa, material, cantidad y orientación cambian el cálculo. El perfil adaptado a PrusaSlicer puede diferir de Bambu Studio y no sustituye una prueba física de fabricación.
+### Una estimación no es una aprobación
 
-**La operación depende de varias conexiones.** Una web que carga no garantiza que funcione la API del cotizador, que se genere una factura o que llegue un correo. La recuperación ayudó a comprobar esas partes por separado.
+La pieza personalizada necesita reunir información antes de convertirse en un pedido. Mostrar una estimación ayuda al cliente, pero no elimina la revisión del equipo. Esto me permitió distinguir cálculo, propuesta y confirmación dentro de un proceso de negocio.
 
-**Una copia de respaldo y una instalación reproducible resuelven problemas distintos.** La recuperación permitió conservar el proyecto; la distribución limpia hizo necesario crear páginas, preparar las carpetas de documentos y sustituir dependencias de la configuración antigua.
+### El correo es parte del recorrido
 
-**Los servicios de prueba permiten revisar el recorrido.** Mailpit conserva mensajes y adjuntos; la pasarela simulada permite comprobar estados de pedidos. Ninguno demuestra entrega externa ni procesamiento bancario real.
+Una solicitud o un pedido también genera información fuera de la pantalla. Trabajar con SMTP y documentos me ayudó a relacionar el estado de la operación con el mensaje que recibe el cliente y con el documento que debe acompañarlo.
 
-La recuperación y estas correcciones fueron asistidas por IA. Las presento como trabajo realizado con acompañamiento y como oportunidades para reforzar mi capacidad de operación y diagnóstico.
+### SEO y medición tienen procesos propios
 
-## Recomendaciones de negocio derivadas del diseño
+Conocer Rank Math, Site Kit y Search Console me mostró que publicar la web no termina el trabajo. También hay que preparar el contenido para buscadores, conocer el proceso de indexación y consultar métricas cuando estén disponibles. No presento esa vinculación como garantía de posicionamiento ni como medición instantánea.
 
-Son propuestas para una siguiente versión, no conclusiones de un experimento con clientes:
+### La infraestructura sostiene la aplicación
 
-1. **Mostrar el precio como preliminar y aclarar el envío.** Evitar que el cliente interprete la estimación como una oferta de fabricación ya aprobada.
-2. **Informar el estado de revisión y el siguiente paso.** La solicitud debe indicar qué falta por confirmar y cómo continuar cuando el equipo responda.
-3. **Registrar estimación y revisión final.** Comparar más adelante material, tiempo y precio estimados con los de piezas realmente fabricadas ayudaría a ajustar el modelo de costos.
-4. **Medir el recorrido con datos propios.** En una operación real convendría observar cargas, solicitudes, aprobaciones y pedidos pagados para identificar dónde se pierde continuidad, sin atribuir esos indicadores a las pruebas actuales.
+El uso de contenedores me permitió ver responsabilidades distintas: aplicación, base, caché, cálculo, archivos y correo. La adaptación local hizo visible por qué los datos deben persistir y por qué una conexión que funciona en VPS puede necesitar otra configuración en la PC.
 
-## Límites del corte publicado
+## Mejoras que plantearía para una siguiente versión
 
-No se hicieron pruebas de cobro real de Wompi, SMTP externo, carga de producción ni calidad física de impresión. La subida y el cálculo en la distribución limpia se verificaron desde la integración WordPress–API. La galería muestra el modelo sintético calculado en la copia recuperada y abierto después en su interfaz, con esa procedencia identificada.
+- **Hacer más claro el siguiente paso de una cotización:** indicar qué está pendiente de revisión y cómo continuar cuando el equipo responda.
+- **Dar seguimiento al recorrido:** medir visitas, consultas y solicitudes con una configuración adecuada, y después relacionarlas con pedidos confirmados.
+- **Mantener comunicación coherente:** revisar que pantalla, correo y PDF expresen el mismo estado y las mismas condiciones.
+- **Documentar operación y mantenimiento:** conexiones, respaldo, restauración y actualización de servicios para reducir dependencia de configuraciones recordadas de memoria.
+- **Contrastar estimaciones con fabricación:** si se retoma la operación, comparar cálculos con piezas realmente producidas antes de ajustar condiciones comerciales.
 
-La revisión de archivos para compartir fue enfocada en secretos y datos personales; no equivale a una auditoría exhaustiva de vulnerabilidades de todas las dependencias. No se publican los reportes internos, las bases ni las cuentas del proyecto.
+Son propuestas de mejora, no resultados de campañas o experimentos realizados con clientes.
+
+## Alcance de la demostración
+
+Las capturas muestran la tienda recuperada y el laboratorio reproducible. Las pruebas locales incluyeron catálogo, cálculo de un modelo de ejemplo, solicitud y revisión, pedido simulado, documentos PDF y correo en Mailpit. El detalle operativo se conserva con la implementación privada.
+
+La demostración no procesa cobros ni envía mensajes a Internet. No presenta ventas obtenidas, métricas reales de clientes, pruebas físicas de impresión ni un servicio público actualmente activo. Los plugins y servicios del entorno original se describen como contexto y aprendizaje; no se afirma que todas sus cuentas estén conectadas en la copia local.

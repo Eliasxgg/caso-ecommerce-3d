@@ -1,73 +1,90 @@
-# Arquitectura: del entorno original a la demostración local
+# Arquitectura e integración de servicios
 
-## Referencia del proyecto en VPS
+## Cómo organicé la solución
 
-El entorno recuperado utilizaba WordPress/PHP Apache, WooCommerce, MariaDB, Redis, cotizador Python y antivirus en una VPS Ubuntu. El acceso web pasaba por un proxy con dominio/HTTPS. La tienda tenía integración de correo externo y del plugin Wompi El Salvador.
+El centro de la aplicación es WordPress con WooCommerce. Allí se presentan los productos y se gestionan las cuentas, el carrito y los pedidos. Para las piezas personalizadas, un plugin conecta la tienda con el servicio Python de cotización. Separar ambas responsabilidades permite entender qué parte gestiona la compra y cuál procesa el modelo.
+
+| Capa | Tecnologías | Papel y aprendizaje |
+| --- | --- | --- |
+| Sitio y comercio | WordPress, WooCommerce y tema visual | Páginas, catálogo, cuentas, checkout y administración |
+| Integración del cotizador | Plugin WordPress, Python/FastAPI | Envío de archivos y configuración; retorno de una estimación |
+| Visualización y cálculo | Three.js, PrusaSlicer | Vista 3D y estimación preliminar de material y tiempo |
+| Datos y caché | MariaDB, Redis | Persistencia del sitio y caché de objetos |
+| Archivos | ClamAV | Inspección previa al procesamiento de modelos |
+| Documentos y eventos | PDF, SMTP | Relación entre solicitud, pedido y comunicación con el cliente |
+| Operación | Ubuntu, Docker Compose y proxy web | Conexión de servicios, configuración y conservación de datos |
+
+## Entorno original en VPS
+
+El proyecto se alojaba en Ubuntu, en Oracle Cloud. El acceso se hacía mediante dominio y HTTPS, con servicios de la aplicación en contenedores. Además de la tienda y el cotizador, el sitio se relacionaba con correo, pago, SEO y medición.
+
+```mermaid
+flowchart TD
+    A[Visitante] --> B[Dominio y acceso HTTPS]
+    subgraph VPS[Proyecto original: VPS Ubuntu]
+      B --> C[WordPress y WooCommerce]
+      C --> D[(MariaDB)]
+      C --> E[(Redis)]
+      C --> F[Cotizador Python]
+      F --> G[ClamAV y PrusaSlicer]
+      C --> H[Plugins de documentos, SEO y protección]
+    end
+    C --> I[Fluent SMTP]
+    I --> J[Brevo: entrega de correo]
+    C -. Integración de pago .-> K[Wompi El Salvador]
+    C -. Medición e indexación .-> L[Site Kit y Search Console]
+```
+
+### Qué aportaban los plugins
+
+- **Fluent SMTP y Brevo:** configuración del envío de notificaciones; el trabajo incluyó correo hacia buzones Hotmail, según la experiencia del proyecto.
+- **Wordfence:** acercamiento a herramientas de protección y seguimiento del sitio WordPress. No sustituye la administración de la VPS ni garantiza por sí solo la seguridad de la aplicación.
+- **Rank Math SEO:** práctica de ajustes SEO y preparación del contenido para buscadores.
+- **Google Site Kit y Search Console:** aprendizaje de la vinculación del sitio con herramientas de medición y del proceso de indexación. Publicar o solicitar indexación no garantiza una posición en búsquedas; los datos tienen sus propios tiempos de actualización.
+- **Wompi:** integración del proveedor de pago en el contexto original. Las evidencias actuales utilizan simulación local, sin cobros reales.
+
+Los plugins están presentes en los archivos recuperados; la configuración de Brevo y el uso de herramientas de Google se incorporan también a partir de lo explicado por el autor. Las cuentas, claves y configuraciones comerciales no se publican. El diagrama describe la referencia del proyecto, no un despliegue actualmente activo.
+
+## Entorno local definitivo
+
+La distribución de laboratorio ejecuta la solución en Docker Desktop con contenedores Linux. Su grupo se llama **`oceanprint-local`**. La tienda se consulta en el puerto **8084** y el buzón de pruebas en **8085**, únicamente desde la PC.
 
 ```mermaid
 flowchart LR
-    U[Cliente] --> HTTPS[Dominio y proxy HTTPS]
-    subgraph VPS[Referencia: VPS Ubuntu]
-      HTTPS --> WP[WordPress y WooCommerce]
-      WP --> DB[(MariaDB)]
-      WP --> Cache[(Redis)]
-      WP --> API[FastAPI: cotizador]
-      API --> Scanner[ClamAV]
-      API --> Slicer[PrusaSlicer]
+    A[Navegador local] --> B[Nginx]
+    B --> C[WordPress y WooCommerce]
+    B --> H[Mailpit: buzón local]
+    subgraph Interna[Red interna Docker]
+      C --> D[(MariaDB)]
+      C --> E[(Redis)]
+      C --> F[FastAPI: cotizador]
+      F --> G[ClamAV y PrusaSlicer]
+      C -->|SMTP| H
     end
-    WP -. Integración del proyecto .-> Payment[Wompi El Salvador]
-    WP -. Correo del proyecto .-> SMTP[SMTP externo]
+    D --- V[Volúmenes persistentes]
+    C --- V
+    F --- V
+    H --- V
 ```
 
-Es un esquema de la arquitectura recuperada, no una afirmación de que la VPS, el dominio o los proveedores externos estén operativos hoy. Las pruebas locales no verificaron transacciones reales ni entrega de correo externo.
+| Aspecto | VPS del proyecto | Adaptación local |
+| --- | --- | --- |
+| Acceso | Dominio y HTTPS | Navegador en localhost |
+| Datos | Contenido y configuración del proyecto | Catálogo y cuentas ficticias en instalación nueva |
+| Pago | Integración Wompi | Pasarela de prueba sin tarjeta ni cobro |
+| Correo | Fluent SMTP con Brevo | Mailpit interno para revisar mensajes y adjuntos |
+| SEO y medición | Plugins y servicios vinculados al dominio | Contexto de aprendizaje; no se conectan cuentas externas de producción |
+| Configuración | Accesos propios de la VPS | Secretos generados para cada instalación |
+| Persistencia | Datos de servicios en el servidor | Volúmenes de Docker conservados al recrear contenedores |
 
-## Adaptación para una PC
+## Decisiones que aprendí a relacionar
 
-```mermaid
-flowchart LR
-    Browser[Navegador local] --> Proxy[Nginx: acceso por loopback]
-    Proxy --> WP[WordPress y WooCommerce]
-    Proxy --> Inbox[Buzón Mailpit]
-    subgraph Internal[Red Docker interna]
-      WP --> DB[(MariaDB)]
-      WP --> Redis[(Redis)]
-      WP --> Quote[FastAPI]
-      Quote --> AV[ClamAV]
-      Quote --> Engine[PrusaSlicer]
-      WP -->|SMTP interno| Inbox
-    end
-    AV --> Signatures[Actualización de firmas]
-```
+**Usar una base existente para el comercio.** WooCommerce permite concentrar el trabajo en la configuración de la tienda y en la integración especializada, en lugar de programar cada parte comercial.
 
-| Componente | Papel en la solución |
-| --- | --- |
-| WordPress y WooCommerce | Interfaz, cuentas, catálogo, pedidos y estados comerciales |
-| Plugin de cotización | Conexión entre la web, el cliente y el servicio de análisis |
-| FastAPI | Gestión de archivos, geometría, cálculos y solicitudes |
-| Three.js | Vista interactiva del modelo en el navegador |
-| PrusaSlicer | Estimación por laminado con un perfil A1 Mini adaptado |
-| MariaDB / Redis | Persistencia de WordPress y caché de objetos |
-| ClamAV | Inspección de los archivos antes de procesarlos |
-| Mailpit | Recepción local de correos y adjuntos para probar notificaciones |
-| Docker Compose | Conexión y operación conjunta de los servicios |
+**Mantener revisión humana.** El cálculo ayuda a orientar una solicitud; el equipo revisa si la pieza puede fabricarse y qué condiciones deben confirmarse.
 
-## Qué cambió y por qué
+**Separar servicios y conexiones.** Tienda, base, caché, cotizador y correo tienen responsabilidades distintas. Esta separación facilita identificar qué revisar cuando falla una parte del recorrido.
 
-- **Datos:** la copia recuperada conserva contenido académico; la distribución privada reproducible genera un catálogo ficticio y una base nueva.
-- **Credenciales:** cada instalación genera claves locales. Los respaldos y accesos históricos no forman parte de la distribución compartida.
-- **Pagos:** la demo utiliza una pasarela simulada y no solicita tarjetas. El plugin Wompi histórico se mantuvo fuera de la copia redistribuible por las restricciones de su archivo de licencia.
-- **Correo:** los mensajes se reciben por SMTP en Mailpit. Es posible comprobar cuerpo, destinatario y PDF sin enviarlos a Internet.
-- **Acceso:** los puertos web se publican solo en la interfaz local. Base, caché, API y SMTP permanecen sin puertos públicos.
-- **Archivos:** WordPress vive en un volumen Linux de Docker para evitar la lentitud de acceder a miles de archivos mediante un montaje desde Windows.
+**Conservar datos fuera de los contenedores.** Recrear un servicio y borrar sus datos son acciones diferentes. La adaptación permitió practicar esa distinción y mantener una demostración reutilizable.
 
-La distribución nueva utiliza WordPress 7.1.5; los archivos históricos recuperados contenían 7.1.3. Esta adaptación no es un traslado literal de toda la VPS ni una configuración lista para exponer a Internet.
-
-## Decisiones que considero relevantes
-
-**Mantener la revisión humana.** El laminado aporta una estimación; el equipo debe revisar geometría, soportes, acabado y viabilidad antes de fabricar.
-
-**Separar cálculo y comercio.** WordPress gestiona el pedido; el servicio Python analiza el modelo. Así puedo explicar y comprobar cada parte de forma independiente.
-
-**Probar integraciones sin servicios reales.** La simulación de pago y el buzón SMTP permiten recorrer los estados y revisar documentos durante la demostración.
-
-**Conservar datos fuera de los contenedores.** Los volúmenes permiten mantener archivos, base y mensajes cuando se recrean servicios. Su eliminación sigue siendo una operación distinta y debe planificarse.
+**Adaptar las dependencias al entorno.** El correo y el pago locales permiten recorrer la aplicación sin utilizar las cuentas comerciales. Un despliegue futuro necesitaría su propia configuración de dominio, accesos y servicios.

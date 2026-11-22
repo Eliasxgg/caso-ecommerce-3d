@@ -1,51 +1,56 @@
 # Contexto y participación
 
-## Origen académico
+## De dónde surgió el proyecto
 
-OceanPrint3D forma parte del trabajo grupal de **Comercio Electrónico**, en la Universidad Evangélica de El Salvador. Los materiales conservados están organizados en el ciclo 9 de 2026 e incluyen una propuesta de valor y un plan de mercadeo y publicidad para un e-commerce de impresión 3D.
+OceanPrint3D fue un trabajo grupal de **Comercio Electrónico**, en la **Universidad Evangélica de El Salvador**, ciclo 9 de **2026**. La idea inicial de la tienda surgió de un compañero y se desarrolló mediante actividades de clase, una propuesta de valor y un plan de mercadeo y publicidad.
 
-La propuesta se centraba en productos útiles y personalizables para uso diario, hogar, oficina y regalos. En este caso la presento como el planteamiento académico del equipo, no como una conclusión respaldada por una investigación de mercado independiente.
+No partimos únicamente de diseñar una página. En clase trabajamos el planteamiento de la oferta, el público y el contexto del mercado salvadoreño para dar sentido a una tienda de productos y piezas personalizadas. Es un ejercicio académico de planificación; no lo presento como una validación comercial independiente.
 
-La idea inicial fue de un compañero. Después trabajamos en equipo para desarrollar la tienda, incorporar productos y preparar el proceso de cotización de piezas personalizadas.
+Este caso público explica la aplicación tecnológica. Los documentos originales, el detalle de la propuesta comercial, la planificación de campañas y la configuración de precios se conservan de forma privada.
 
-## Qué buscábamos conseguir
+## Cómo se tradujo la idea a una web
 
-- Mostrar productos y opciones de personalización en un mismo sitio.
-- Dar al cliente una estimación preliminar al subir su modelo.
-- Recoger archivo, configuración, cantidad y notas de forma ordenada.
-- Mantener revisión humana antes de confirmar la fabricación y el precio.
-- Relacionar solicitud, propuesta y pedido, con documentos y notificaciones.
-
-El plan de mercadeo incluía metas de ventas y una conversión estimada. Esas cifras eran objetivos de planificación. No se utilizan aquí como resultados comerciales ni como evidencia de una campaña ejecutada.
-
-## Mi aporte
-
-Participé principalmente en la dirección del diseño y la evolución de la web, la configuración de WordPress y el trabajo con la VPS con apoyo del asistente. Fui planteando cómo quería que se viera y se comportara la solución, revisando cambios y solicitando ajustes.
-
-Mis compañeros colaboraron con productos, precios, ideas y pruebas relacionadas con la impresora y el funcionamiento del cotizador. Su mayor acceso al equipo de impresión fue relevante para esas comprobaciones.
-
-## Asistencia y límites de atribución
-
-La implementación de código tuvo asistencia importante de IA. También se utilizó para resolver problemas, configurar servicios y, posteriormente, recuperar el proyecto y adaptarlo a Docker Desktop. Algunas configuraciones avanzadas de seguridad y respaldo fueron implementadas con esa asistencia y requieren seguir reforzando mi comprensión; no las presento como administración autónoma acreditada.
-
-El valor de este caso está en la participación que puedo explicar y en la integración demostrable. No atribuyo la idea original ni todo el trabajo a una sola persona.
-
-## Evolución del proyecto
-
-| Etapa | Qué se conserva o se hizo |
+| Necesidad planteada | Respuesta en la aplicación |
 | --- | --- |
-| Desarrollo académico | Propuesta de valor, planificación comercial, diseño de tienda y cotización |
-| Entorno original | WordPress y servicios relacionados en una VPS Ubuntu de Oracle Cloud |
-| Recuperación | Revisión de archivos y respaldos para ejecutar una copia local aislada |
-| Laboratorio reproducible | Instalación nueva con datos ficticios, pagos simulados y correo interno |
-| Presentación profesional | Este caso público, con contexto, arquitectura y evidencias seleccionadas |
+| Presentar la oferta | Inicio, categorías y fichas de productos |
+| Facilitar una compra de catálogo | Carrito, checkout y pedidos con WooCommerce |
+| Recoger solicitudes personalizadas | Carga de modelo, opciones y estimación preliminar |
+| Revisar antes de fabricar | Flujo administrativo de cotizaciones y propuestas |
+| Mantener comunicación | Documentos PDF y notificaciones asociadas a los eventos |
+| Dar seguimiento al sitio | Herramientas de SEO, medición y mantenimiento |
 
-La antigua instancia no se declara activa. Un despliegue futuro sería una ampliación independiente; las capturas actuales no representan un servicio público disponible.
+El proceso de planificación ayudó a decidir qué debía mostrar la web y qué operaciones necesitaban administración. Las metas del plan de mercadeo eran objetivos del curso; no se presentan como ventas logradas.
 
-## Materiales revisados para este caso
+## Mi participación
 
-- **Propuesta de valor - OceanPrint:** necesidades planteadas, propuesta y recorrido de cliente.
-- **Plan de mercadeo y publicidad (eCommerce):** asignatura, contexto grupal, público propuesto y objetivos de planificación.
-- Documentación y código del proyecto, respaldos recuperados y registros de pruebas locales del 21/11/2026.
+Mi aporte principal fue **definir la presentación y el comportamiento de la web**, trabajar la configuración de WordPress y participar en la integración y el manejo guiado de la VPS. Iba proponiendo el diseño, revisando el funcionamiento y solicitando cambios conforme evolucionaba el proyecto.
 
-Los documentos originales se conservan de forma privada. No se publican sus portadas, identificadores estudiantiles, datos de los integrantes ni archivos completos.
+También participé en la relación entre la tienda, el cotizador y los servicios que la apoyaban. Esa experiencia me acercó a Docker, Ubuntu y a la necesidad de configurar conexiones, conservar datos y revisar componentes más allá de lo visible en el navegador.
+
+Mis compañeros colaboraron con productos, precios, ideas y pruebas del cotizador. Su acceso y conocimiento de la impresora contribuyeron al trabajo del equipo. La idea y la realización se atribuyen como proyecto grupal.
+
+## Lo que me interesa mostrar profesionalmente
+
+- Capacidad para relacionar una necesidad del negocio con funciones de una aplicación.
+- Práctica de diseño y administración de una tienda con WordPress/WooCommerce.
+- Familiaridad con la integración de servicios, configuración por entorno y persistencia en Docker.
+- Aprendizaje del papel del correo, los documentos, el SEO y la medición en un sitio web.
+- Interés por continuar en infraestructura y operación, reforzando la comprensión de las configuraciones que utilicé con apoyo.
+
+Son aprendizajes de un proyecto académico. No asigno automáticamente un nivel avanzado a cada tecnología de la arquitectura.
+
+## Trabajo con IA y acompañamiento
+
+Utilizamos IA de forma importante para implementar código, resolver problemas y apoyar configuraciones de la VPS y de los servicios. Mi trabajo incluyó plantear necesidades, dirigir el diseño, revisar lo generado y solicitar ajustes; no fue programación manual individual de toda la solución.
+
+La recuperación y la adaptación local posteriores también tuvieron asistencia. Algunas configuraciones avanzadas de seguridad y respaldo requieren seguir reforzando mi comprensión. Mantengo esa atribución para que el caso sea coherente con lo que puedo explicar en una entrevista.
+
+## Evolución
+
+1. **Planteamiento académico:** oferta, propuesta de valor y planificación comercial.
+2. **Construcción de la tienda:** diseño, catálogo, cotizador e integraciones.
+3. **Trabajo en VPS:** Ubuntu, servicios en contenedores, dominio y conexiones externas.
+4. **Adaptación local:** conservación del proyecto y distribución con datos ficticios.
+5. **Presentación profesional:** implementación privada y caso público documental.
+
+La referencia académica se contrastó con los materiales conservados de la asignatura y con lo explicado por el autor. No se publican portadas, identificadores de estudiantes ni documentos completos del equipo.

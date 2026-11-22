@@ -1,55 +1,54 @@
-# Recorrido visual
+# Recorrido visual de la tienda
 
-Las imágenes muestran demostraciones locales del proyecto. **No representan una tienda comercial activa ni pagos reales.** Las primeras cuatro proceden de la copia recuperada; la última corresponde al laboratorio reproducible con datos ficticios. Los modelos y pedidos utilizados como evidencia son de prueba.
+Este recorrido muestra cómo se relacionan la experiencia del cliente y las funciones de operación. Las imágenes se tomaron en demostraciones locales con operaciones de prueba. Las cuatro primeras conservan la presentación del sitio recuperado; el buzón corresponde a la distribución de laboratorio.
 
-## 1. Presentación de la tienda
+## E-commerce
 
-La portada introduce los productos, el material y las dos entradas principales: explorar el catálogo o solicitar una pieza personalizada.
+### Inicio: presentar la oferta y orientar al visitante
 
-![Inicio de la tienda](../assets/01-inicio.jpg)
+La portada introduce la tienda y da acceso al catálogo y a las solicitudes personalizadas. Trabajé la identidad visual, la distribución del contenido y la navegación como parte de mi participación en el proyecto.
 
-La interfaz conserva la identidad azul oscuro, naranja y celeste del proyecto. El aviso superior identifica el entorno local.
+![Inicio de OceanPrint3D](../assets/01-inicio.jpg)
 
-## 2. Catálogo de productos
+### Catálogo: organizar productos y facilitar la elección
 
-Las tarjetas presentan imagen, precio, categoría y opciones de compra. Esta captura conserva el catálogo académico recuperado; la distribución nueva genera seis productos ficticios con ilustraciones geométricas.
+Las tarjetas reúnen imagen, precio y categoría. Esta vista permite explicar el trabajo de configuración de productos y navegación con WordPress y WooCommerce.
 
-![Tarjetas de productos del catálogo recuperado](../assets/02-catalogo.jpg)
+![Catálogo de productos](../assets/02-catalogo.jpg)
 
-Las marcas o personajes que aparecen incidentalmente en la interfaz no implican afiliación comercial ni se ofrecen como recursos descargables de este caso.
+La captura conserva elementos del catálogo académico. La instalación nueva utiliza productos ficticios; las marcas o personajes visibles no implican afiliación ni se ofrecen como recursos descargables.
 
-## 3. Cotizador y vista del modelo
+## Integración y operación
 
-Se utilizó un cubo STL sintético de 20 mm. La pantalla muestra la estimación para **15 copias: $3.60**, unos **54.4 g** de material y **2 h 34 min** de impresión estimada, con los parámetros de prueba.
+### Cotizador: conectar una solicitud con un servicio especializado
 
-![Modelo sintético en el visor 3D, estimación y opciones de material y capa](../assets/03-cotizador.jpg)
+El visor permite consultar el modelo y ajustar opciones de impresión. La estimación acompaña la solicitud que revisará el equipo antes de continuar con el pedido.
 
-El cálculo se preparó a través de la integración WordPress–cotizador y se abrió después en la interfaz. No se alteraron los valores de la pantalla para la captura. El precio es preliminar y está sujeto a revisión; no es una tarifa comercial recomendada.
+![Cotizador, modelo 3D y configuración](../assets/03-cotizador.jpg)
 
-## 4. Confirmación del pedido simulado
+Se utilizó un cubo sintético y parámetros de ejemplo. El cálculo procede de la integración WordPress–cotizador. El importe visible explica la función de la interfaz; no se publica como tarifa comercial ni como venta.
 
-La confirmación permite consultar piezas, subtotal, envío, método de pago y factura. El pedido mostrado utilizó datos ficticios y la pasarela **Pago de prueba — sin cobro real**.
+### Pedido: relacionar la compra con su confirmación
+
+La pantalla reúne productos, importes, envío, método de pago y acceso al documento. Permite seguir la relación entre checkout y pedido dentro de WooCommerce.
 
 <details>
-<summary>Ver la confirmación completa del pedido de prueba</summary>
+<summary>Ver la confirmación completa de un pedido simulado</summary>
 
-![Confirmación del pedido simulado con datos ficticios](../assets/04-pedido.jpg)
+![Pedido simulado con datos ficticios](../assets/04-pedido.jpg)
 
 </details>
 
-Esta captura se obtuvo al recorrer el checkout en la copia local recuperada. El laboratorio limpio también comprobó el pago y la generación de factura desde WooCommerce; ambas pruebas se distinguen en [resultados y alcance](RESULTADOS_Y_APRENDIZAJES.md).
+La operación utiliza datos ficticios y una pasarela de prueba sin cobro real.
 
-## 5. Notificaciones y documentos por SMTP local
+### Correo y documentos: continuar el proceso fuera de la web
 
-Mailpit permite revisar los mensajes que genera la aplicación. La bandeja muestra correos de nueva solicitud, nuevo pedido y confirmación; los indicadores de adjunto permiten identificar los documentos PDF.
+Las notificaciones conectan los eventos de la aplicación con mensajes y PDF. En la VPS trabajamos con Fluent SMTP y Brevo; en local, Mailpit permite revisar el contenido sin enviar mensajes a buzones externos.
 
-![Correos de pedido y cotización recibidos en el buzón SMTP local](../assets/05-smtp.jpg)
+![Notificaciones y adjuntos en Mailpit](../assets/05-smtp.jpg)
 
-Los destinatarios son direcciones ficticias. Los mensajes permanecen en Docker: esta evidencia no acredita entrega a un buzón de Internet. La versión final de la prueba adjuntó la factura al correo del cliente y el PDF preliminar a la solicitud de revisión.
+## Qué aporta este recorrido al caso
 
-## Cómo interpretar las evidencias
+Las pantallas permiten ver diseño, configuración de una tienda e integración de servicios. El contexto de SEO, medición y protección se explica en [arquitectura](ARQUITECTURA.md); no se añaden capturas de cuentas externas, claves o información de terceros.
 
-- La identidad visual recuperada y la distribución limpia forman parte de la misma evolución del proyecto, pero utilizan conjuntos de datos distintos.
-- No se publican la base histórica, archivos de clientes, documentos completos del curso ni accesos a administración.
-- Las capturas demuestran funciones observadas; no prueban rendimiento con carga real, calidad física de una impresión ni resultados comerciales.
-- Los avisos y logotipos heredados sobre Wompi describen la integración del proyecto original. Los pagos de estas demostraciones son simulados.
+[Mi participación](CONTEXTO_Y_PARTICIPACION.md) · [Resultados y aprendizajes](RESULTADOS_Y_APRENDIZAJES.md) · [Volver al caso](../README.md)

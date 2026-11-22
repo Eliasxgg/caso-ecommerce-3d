@@ -1,91 +1,113 @@
-# OceanPrint3D: comercio electrónico y cotización de impresión 3D
+# OceanPrint3D: caso de e-commerce con WordPress
 
-**Caso de estudio académico · UEES · Comercio Electrónico · 2026**
+**WordPress · WooCommerce · Docker · Ubuntu · Integración de servicios**
 
-Participé en el desarrollo de una tienda de impresión 3D que combina un catálogo de productos con solicitudes de piezas personalizadas. El cliente puede explorar productos o subir un modelo, obtener una estimación preliminar y enviarla al equipo para revisión antes de continuar con la compra.
+Proyecto académico grupal · Comercio Electrónico · UEES · 2026
 
-Aquí presento el problema, el recorrido de la solución, mi participación y las pruebas realizadas. La implementación se conserva en un repositorio privado. Las evidencias corresponden a demostraciones locales; los pagos son simulados y los correos de prueba permanecen en un buzón interno.
+En este proyecto participé en la construcción de una tienda de impresión 3D: presentación del negocio, catálogo, pedidos y solicitudes de piezas personalizadas mediante un cotizador. Mi interés fue aprender cómo llevar una propuesta de clase a una solución web y cómo conectar los servicios necesarios para operarla.
 
-![Inicio de OceanPrint3D en la copia local del proyecto](assets/01-inicio.jpg)
+El trabajo partió de una propuesta de valor y un plan de mercadeo elaborados en clase para el contexto de El Salvador. Aquí me concentro en la solución tecnológica y en lo que aprendí; la planificación comercial y la implementación se conservan de forma privada.
 
-## El problema que buscábamos resolver
+![Portada de OceanPrint3D](assets/01-inicio.jpg)
 
-En la propuesta de valor del curso planteamos una dificultad: encontrar productos personalizados y entender qué se puede fabricar, con qué material y a qué precio. Una solicitud por mensajes puede dejar incompletos el archivo, las medidas, la cantidad o el detalle de lo que el cliente necesita.
+## Del planteamiento a la solución
 
-Nuestro objetivo fue reunir catálogo, cotización y seguimiento en un mismo sitio. Para las piezas personalizadas, elegimos separar la **estimación automática** de la **aprobación del equipo**: un cálculo de material y tiempo no basta para garantizar que una pieza pueda fabricarse con el acabado esperado.
+Buscábamos que una persona pudiera conocer la oferta, consultar productos y solicitar una pieza personalizada desde un mismo sitio. Para esa segunda opción, necesitábamos reunir el modelo, sus características y la cantidad solicitada, y dar al equipo la oportunidad de revisar la petición antes de continuar con el pedido.
 
-## Cómo funciona la solución
+Elegimos **WordPress y WooCommerce** como base para la tienda y conectamos un servicio especializado para la cotización. Esto permitió trabajar tanto la experiencia del cliente como la administración del catálogo, los pedidos, los documentos y las notificaciones.
+
+### Recorrido de compra
+
+El cliente tiene dos entradas. La compra de catálogo avanza al carrito; una pieza personalizada pasa primero por estimación y revisión.
+
+```mermaid
+flowchart TD
+    A[Inicio de la tienda] --> B{Qué necesita el cliente}
+    B -->|Producto disponible| C[Explorar catálogo y elegir producto]
+    B -->|Pieza personalizada| D[Cargar modelo y configurar opciones]
+    D --> E[Consultar estimación preliminar]
+    E --> F[Enviar solicitud al equipo]
+    F --> G{Revisión de la solicitud}
+    G -->|Requiere cambios| D
+    G -->|Aprobada o propuesta aceptada| H[Continuar con el pedido]
+    C --> I[Carrito y checkout]
+    H --> I
+    I --> J[Pago y confirmación]
+    J --> K[Pedido, documento y notificación]
+```
+
+En la demostración local, el pago se simula y las notificaciones se reciben en un buzón interno.
+
+## Qué integra el proyecto
+
+| Área | Función dentro de la tienda | Aprendizaje aplicado |
+| --- | --- | --- |
+| Presentación y catálogo | Inicio, categorías, fichas y navegación | Organizar contenido, diseño y recorrido del cliente con WordPress |
+| Comercio electrónico | Carrito, checkout, cuentas y estados de pedidos | Configurar WooCommerce y relacionar la compra con su administración |
+| Cotización personalizada | Archivo 3D, visor y opciones de impresión | Integrar la web con un servicio de cálculo y presentar una estimación |
+| Revisión administrativa | Solicitudes y propuestas antes de comprar | Distinguir una estimación automática de una decisión del equipo |
+| Documentos y correo | Cotizaciones, facturas y notificaciones | Conectar los eventos del negocio con PDF y transporte SMTP |
+| Operación del sitio | Base de datos, caché y servicios en contenedores | Entender dependencias, persistencia y configuración por entorno |
+| Visibilidad y mantenimiento | SEO, medición y herramientas de protección | Reconocer que publicar una web también requiere seguimiento y mantenimiento |
+
+![Cotizador integrado con vista del modelo y opciones de impresión](assets/03-cotizador.jpg)
+
+## Tecnologías y decisiones
+
+### Aplicación e integración
+
+- **WordPress y WooCommerce:** base del sitio, catálogo y gestión de pedidos.
+- **Python/FastAPI, Three.js y PrusaSlicer:** servicio de cotización, visualización del modelo y estimación de impresión, con asistencia de IA en su implementación.
+- **MariaDB y Redis:** almacenamiento de la aplicación y caché de objetos.
+- **ClamAV:** inspección de archivos recibidos por el cotizador.
+- **Docker Compose y Ubuntu:** organización de los servicios y práctica de operación en VPS.
+
+### Herramientas del sitio original
+
+Trabajamos con **Fluent SMTP y Brevo** para configurar el correo, **Wordfence** para protección del sitio, **Rank Math SEO** para sus ajustes de posicionamiento y **Google Site Kit / Search Console** para conocer el proceso de medición e indexación. También integramos el plugin de **Wompi El Salvador** como parte del proyecto original.
+
+Estas herramientas me ayudaron a ver el e-commerce como un conjunto de servicios. Instalar un plugin es solo un paso: también hay que entender su configuración, sus conexiones y su mantenimiento. Las métricas dependen de la recopilación y actualización de cada servicio; no las presento como información instantánea ni como resultados comerciales obtenidos.
+
+### VPS y trabajo local
+
+La versión original se alojaba en una **VPS Ubuntu de Oracle Cloud**, con dominio y servicios externos. La versión local conserva la integración en Docker, utiliza datos ficticios y sustituye el cobro y la entrega externa de correo por servicios de demostración.
 
 ```mermaid
 flowchart LR
-    A[Cliente] --> B{Tipo de compra}
-    B --> C[Producto del catálogo]
-    C --> G[Carrito y pedido]
-    B --> D[Modelo STL, OBJ o 3MF]
-    D --> E[Vista 3D y estimación]
-    E --> F[Revisión del equipo]
-    F -->|Aprobar o proponer ajuste| G
-    G --> H[Pago simulado en la demo]
-    H --> I[Confirmación y factura]
+    A[Navegador] --> B[Nginx]
+    subgraph Docker[Entorno local con Docker Compose]
+      B --> C[WordPress y WooCommerce]
+      C --> D[(MariaDB)]
+      C --> E[(Redis)]
+      C --> F[Servicio de cotización]
+      F --> G[Análisis de archivos y laminado]
+      C --> H[Mailpit: correo de pruebas]
+    end
 ```
 
-| Parte del proyecto | Qué permite hacer |
-| --- | --- |
-| Tienda | Consultar productos, categorías y precios; utilizar cuenta, carrito y pedidos |
-| Cotizador | Subir un modelo y ajustar material, color, escala, relleno, capa y cantidad |
-| Revisión | Consultar solicitudes y aprobar, rechazar o proponer un precio revisado |
-| Documentos y correo | Generar cotización/factura PDF y revisar notificaciones en el buzón local |
-| Infraestructura | Conectar la web, base de datos, caché, cotizador y antivirus mediante contenedores |
+[Arquitectura original y local](docs/ARQUITECTURA.md) · [Recorrido visual completo](docs/RECORRIDO_VISUAL.md)
 
-![Cotizador con una estimación calculada para un modelo sintético](assets/03-cotizador.jpg)
+## Mi participación y aprendizajes
 
-## Qué pude comprobar
+La idea inicial surgió de un compañero y el trabajo fue grupal. Mi aporte se concentró en **definir el diseño y el comportamiento de la web, configurar WordPress y participar en la integración y el trabajo con la VPS**. Mis compañeros aportaron productos, precios, conocimiento de la impresora y pruebas del cotizador.
 
-La recuperación local permitió verificar el recorrido de la aplicación y preparar una segunda distribución con instalación nueva y datos ficticios.
+Lo que más rescato de este proyecto es haber practicado:
 
-| Prueba | Resultado observado |
-| --- | --- |
-| Instalación limpia | WordPress, dependencias y datos de ejemplo creados sin importar la base histórica |
-| Catálogo de demostración | Seis productos ficticios y cuatro categorías |
-| Cálculo de un cubo de 20 × 20 × 20 mm | Análisis de geometría y laminado con perfil A1 Mini adaptado a PrusaSlicer |
-| Cotización de 15 copias | Estimación de **$3.60** con la configuración de prueba |
-| Pedido de prueba | Estado **Procesando** mediante la pasarela simulada |
-| Documentos y notificaciones | PDF de cotización y factura; correos recibidos en Mailpit con adjuntos |
+- **Construcción y administración de una tienda:** organizar páginas, categorías, productos y el recorrido de compra; relacionarlos con pedidos y documentos.
+- **Integración de servicios:** entender cómo WordPress se comunica con el cotizador, la base de datos y el correo, y por qué una web necesita más que una interfaz.
+- **Infraestructura:** trabajar con una VPS Ubuntu, Docker Compose, configuración, volúmenes y dependencias entre servicios.
+- **Correo, SEO y medición:** conocer la configuración SMTP, los ajustes SEO y la relación del sitio con Site Kit y Search Console.
+- **Recuperación y adaptación:** separar datos, accesos y servicios externos para conservar una demostración que pueda ejecutarse en una PC.
+- **Criterio de negocio:** distinguir catálogo, solicitud, estimación, aprobación y pedido, en lugar de tratarlos como una sola operación.
 
-Son resultados de pruebas funcionales. El importe no es una tarifa comercial recomendada, y no presento metas de mercadeo o proyecciones financieras como ventas obtenidas. [Ver pruebas y alcance](docs/RESULTADOS_Y_APRENDIZAJES.md).
+Utilizamos IA de forma importante para implementar código, resolver problemas y apoyar configuraciones. La recuperación local también fue asistida. Presento mi participación en el diseño, la configuración y la revisión del trabajo; el detalle de responsabilidades está en [contexto y participación](docs/CONTEXTO_Y_PARTICIPACION.md).
 
-## Tecnología y arquitectura
+Este caso refleja mi interés por **infraestructura, operación de sistemas e integración de soluciones para un negocio**. [Resultados y aprendizajes](docs/RESULTADOS_Y_APRENDIZAJES.md) desarrolla estas ideas y las posibles mejoras.
 
-**WordPress · WooCommerce · Python/FastAPI · Three.js · PrusaSlicer · MariaDB · Redis · ClamAV · Docker Compose · Ubuntu · Mailpit**
+## Recorrido visual
 
-El proyecto original funcionaba en una VPS Ubuntu de Oracle Cloud, con dominio y servicios externos. Para conservarlo y demostrarlo en una PC, preparamos una adaptación con contenedores, claves locales nuevas, pagos simulados y correo interno. La integración original de Wompi se describe como parte del proyecto; las pruebas actuales no acreditan un cobro real.
+La galería reúne **inicio, catálogo, cotizador, pedido y notificaciones**. Permite seguir la solución desde la tienda hasta su operación sin necesitar acceso a las cuentas ni al código.
 
-```mermaid
-flowchart LR
-    N[Navegador] --> P[Nginx local]
-    P --> W[WordPress y WooCommerce]
-    W --> DB[(MariaDB)]
-    W --> R[(Redis)]
-    W --> Q[FastAPI: cotizador]
-    Q --> AV[ClamAV: revisión de archivos]
-    Q --> S[PrusaSlicer: laminado]
-    W --> M[Mailpit: SMTP local]
-```
+[Ver las cinco capturas y su explicación](docs/RECORRIDO_VISUAL.md).
 
-[Comparación entre VPS y local](docs/ARQUITECTURA.md) · [Recorrido visual](docs/RECORRIDO_VISUAL.md)
-
-## Mi participación y lo que aprendí
-
-La idea inicial surgió de un compañero y el proyecto se desarrolló en grupo. Mi participación se concentró en el diseño de la web, la configuración de WordPress y el trabajo guiado con la VPS. Mis compañeros aportaron productos, precios, conocimiento de la impresora y pruebas del cotizador.
-
-Utilizamos IA de forma importante para implementar código, resolver problemas y apoyar parte de la configuración. También hubo asistencia en la recuperación y adaptación local. Mi aporte incluyó definir el comportamiento y la presentación, revisar el resultado y participar en la integración; no atribuyo todo el desarrollo a programación manual individual.
-
-El proyecto me permitió practicar cómo se relacionan una aplicación web, sus datos y los servicios que la sostienen. Es la parte que más me interesa seguir desarrollando: **infraestructura, operación de sistemas y soluciones que respondan a una necesidad de negocio**. [Contexto y participación](docs/CONTEXTO_Y_PARTICIPACION.md).
-
-## Cómo recorrer este caso
-
-1. Revisa el [recorrido visual](docs/RECORRIDO_VISUAL.md): tienda, cotizador, pedido y correos.
-2. Consulta la [arquitectura](docs/ARQUITECTURA.md) para entender la integración y la adaptación local.
-3. Lee los [resultados y aprendizajes](docs/RESULTADOS_Y_APRENDIZAJES.md) para distinguir pruebas, decisiones y mejoras posibles.
-
-Este repositorio documenta un proyecto académico y no ofrece una tienda comercial activa. No contiene código de la aplicación, bases de datos, credenciales ni datos personales del equipo o de clientes. [Aviso académico y uso de evidencias](AVISO_ACADEMICO.md).
+> **Proyecto académico.** Las capturas corresponden a demostraciones locales, con operaciones de prueba. La antigua VPS no se presenta como un servicio activo. Este repositorio contiene documentación e imágenes seleccionadas; el código, los documentos comerciales, los datos y los accesos se conservan aparte. [Aviso académico](AVISO_ACADEMICO.md).
