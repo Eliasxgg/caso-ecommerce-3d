@@ -1,0 +1,13 @@
+.env
+.env.*
+runtime/
+private/
+backups/
+*.sql
+*.gz
+*.sqlite*
+*.db
+*.key
+*.pem
+*.log
+__pycache__/
