@@ -28,6 +28,8 @@ El modelo es un cubo sintético y el cálculo procede de la integración WordPre
 
 ## 4. Pedido: confirmar la operación digital
 
+En el pie de página se conserva la mención histórica a Wompi. El campo «Método de pago» identifica el pedido de la captura como pago de prueba.
+
 La confirmación reúne productos, importes, envío y acceso al documento. Permite explicar el vínculo entre checkout y pedido.
 
 <details>

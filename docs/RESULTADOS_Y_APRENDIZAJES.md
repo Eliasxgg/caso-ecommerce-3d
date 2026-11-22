@@ -6,6 +6,10 @@ El resultado tecnológico fue una tienda académica desplegada en VPS, con catá
 
 La formulación aportó otra perspectiva: cada función debía relacionarse con información que necesita el cliente o con una actividad del equipo. Una tienda también requiere pensar en solicitudes, confirmaciones, comunicación, producción y seguimiento.
 
+## Evidencia de la demo
+
+Las capturas documentan una estimación para un cubo de prueba, un pedido simulado con desglose y acceso al PDF, y notificaciones recibidas por Mailpit. Son pruebas separadas. [Ver recorrido visual](RECORRIDO_VISUAL.md).
+
 ## Aprendizajes del entorno original
 
 | Área | Qué aprendí a relacionar | Aplicación |

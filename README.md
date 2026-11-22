@@ -68,9 +68,10 @@ flowchart TD
     B -->|Catálogo| C["Producto y opciones"]
     B -->|Modelo personalizado| D["Modelo 3D y estimación"]
     D --> E["Revisión y propuesta del equipo"]
-    E -->|Aprobación y aceptación| F["Carrito y pedido"]
+    E -->|Cliente acepta la propuesta| L["Iniciar sesión para comprar"]
+    L --> F["Carrito y pedido"]
     E -->|Ajustar solicitud| D
-    C --> F
+    C --> L
     F --> G["Integración de pago y confirmación"]
     G --> H["Documento y notificación"]
     H -. "Operación física propuesta" .-> I["Programar fabricación, revisar y entregar"]

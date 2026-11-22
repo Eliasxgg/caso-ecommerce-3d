@@ -48,6 +48,10 @@ El navegador no accedía directamente a MariaDB, Redis o al backend de modelos. 
 
 La tienda tenía redes para datos, acceso web y comunicación privada con el cotizador. MariaDB y Redis estaban en la red interna; el backend de modelos se relacionaba con WordPress mediante una red privada. Se omiten direcciones y secretos de conexión.
 
+### Plugins relevantes
+
+Además de WooCommerce y del cotizador propio, el sitio usaba Redis Object Cache para la caché de objetos, Fluent SMTP para correo, PDF Invoices & Packing Slips para documentos de pedido y Converter for Media para optimizar imágenes. Rank Math generaba el sitemap y gestionaba metadatos. Site Kit conectaba los informes de Google y la integración de Analytics para WooCommerce aportaba el etiquetado de la tienda.
+
 ### Protección por capas
 
 | Capa | Configuración documentada | Aprendizaje |
