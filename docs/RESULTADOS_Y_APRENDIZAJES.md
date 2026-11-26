@@ -68,4 +68,4 @@ Son propuestas, no mejoras comerciales ya medidas.
 
 La adaptación permite revisar catálogo, cotizador, solicitud, pedido simulado, PDF y correo interno desde una PC. Reemplaza pago y SMTP externos por servicios de prueba y utiliza datos ficticios.
 
-Recuperación y pruebas fueron asistidas por IA. Las capturas no acreditan VPS activa, cobros, entregas ni reproducción completa de la infraestructura histórica en Windows.
+Recuperación y pruebas fueron asistidas por IA. Las capturas del 25/11/2026 proceden de la misma versión local distribuida en el repositorio privado, con presentación original recuperada. No acreditan VPS activa, cobros, entregas ni reproducción completa de la infraestructura perimetral en Windows.

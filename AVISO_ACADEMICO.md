@@ -6,7 +6,7 @@ La arquitectura de Oracle Cloud, Cloudflare y los servicios se reconstruye con d
 
 Los documentos incluyen prototipos, actividades exploratorias y planificación de una futura operación. Metas, roles previstos y proyecciones no se presentan como resultados comerciales ni como prueba de ejecución de todas las tareas.
 
-Las capturas son locales. Modelos, pedidos e importes de prueba no representan ventas o tarifas comerciales. Los pagos son simulados y Mailpit no envía correo a Internet. Se distingue la interfaz recuperada del laboratorio reproducible con datos ficticios.
+Las capturas son locales. Modelos, pedidos e importes de prueba no representan ventas o tarifas comerciales. Los pagos son simulados y Mailpit no envía correo a Internet. Se distingue la interfaz recuperada del laboratorio reproducible con cuentas y operaciones ficticias.
 
 Se excluyen código, credenciales, claves de cifrado/SSH, identificadores cloud, bases, buzones completos, estudios comerciales originales, portadas y datos de integrantes. Las imágenes no son un catálogo de activos reutilizables; marcas y recursos de terceros conservan sus condiciones.
 

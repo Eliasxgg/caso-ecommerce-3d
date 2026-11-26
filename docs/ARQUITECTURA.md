@@ -87,7 +87,7 @@ El laboratorio permite conservar y demostrar la aplicación en una PC sin utiliz
 flowchart TD
     PC["Navegador en la PC"] --> WEB["Nginx local: localhost"]
     subgraph DOCKER["Docker Desktop: oceanprint-local"]
-      WEB --> WP["WordPress y WooCommerce: datos ficticios"]
+      WEB --> WP["WordPress y WooCommerce: copia visual original"]
       WP --> DB[(MariaDB)]
       WP --> CACHE[(Redis)]
       WP --> API["Cotizador Python / FastAPI"]
@@ -105,7 +105,7 @@ El grupo final es **`oceanprint-local`**: tienda **localhost:8084** y correo **l
 | --- | --- | --- |
 | Entrada | Dominio, Cloudflare y HTTPS | Nginx por localhost |
 | Protección | Borde, servidor y Wordfence | Aislamiento local, controles seleccionados de la aplicación y ClamAV |
-| Datos | Contenido académico y configuración del sitio | Catálogo y cuentas ficticias de una instalación nueva |
+| Datos | Contenido académico y configuración del sitio | Catálogo académico recuperado; cuentas y operaciones ficticias |
 | Correo | Fluent SMTP/Brevo | Mailpit sin entrega a Internet |
 | Pago | Integración Wompi | Pasarela simulada |
 | SEO y Google | Plugins y cuentas vinculados al dominio | Contexto de aprendizaje, sin cuentas de producción |

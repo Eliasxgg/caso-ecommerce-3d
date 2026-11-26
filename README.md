@@ -100,13 +100,13 @@ Utilizamos **IA de forma importante en implementación y configuraciones**. Mi p
 
 ## Adaptación local para conservar y demostrar el proyecto
 
-El laboratorio conserva la lógica de la tienda y el cotizador en Docker Desktop. Genera datos ficticios, usa claves locales y reemplaza las conexiones comerciales por servicios de prueba. No reproduce Cloudflare ni vincula cuentas de producción.
+El laboratorio conserva la presentación original, sus páginas, imágenes y catálogo académico, junto con la tienda y el cotizador. Usa cuentas y operaciones ficticias, claves locales nuevas y servicios de prueba. No reproduce Cloudflare ni vincula cuentas de producción.
 
 ```mermaid
 flowchart TD
     PC["Navegador en la PC"] --> WEB["Nginx local: localhost"]
     subgraph DOCKER["Docker Desktop: oceanprint-local"]
-      WEB --> WP["WordPress y WooCommerce: datos ficticios"]
+      WEB --> WP["WordPress y WooCommerce: copia visual original"]
       WP --> DB[(MariaDB)]
       WP --> CACHE[(Redis)]
       WP --> API["Cotizador Python / FastAPI"]
@@ -123,15 +123,15 @@ flowchart TD
 | Dominio/Cloudflare/HTTPS → localhost | Ejecutar la demostración desde una PC |
 | Wompi → pasarela simulada | Recorrer pedidos sin tarjeta ni cobro |
 | Fluent SMTP/Brevo → Mailpit | Revisar mensajes y adjuntos sin enviarlos a Internet |
-| Datos históricos → catálogo y cuentas ficticias | Instalación reutilizable sin compartir datos privados |
+| Usuarios y pedidos históricos → cuentas y operaciones ficticias | Instalación reutilizable sin compartir datos privados |
 | Configuración VPS → secretos locales nuevos | Separar accesos por entorno |
 
 El grupo final es **`oceanprint-local`**: tienda en el puerto **8084** y correo en **8085**. [Detalle de la adaptación](docs/ARQUITECTURA.md#adaptación-local).
 
 ## Recorrido visual
 
-La galería muestra **inicio, catálogo, cotizador y pedido** con la interfaz conservada. Al final presenta el **buzón local**, como evidencia de la adaptación. Las capturas se tomaron en local con operaciones de prueba.
+La galería reúne **once capturas de la misma demo del repositorio privado**: inicio y categorías, catálogo, Sobre nosotros, Blog, Contacto, perfil, carrito, cotizador, confirmación y correo. Se conserva la identidad original y se utilizan operaciones de prueba.
 
-[Ver las cinco capturas explicadas](docs/RECORRIDO_VISUAL.md).
+[Ver las once capturas explicadas](docs/RECORRIDO_VISUAL.md).
 
 > **Caso académico y documental.** Este repositorio no opera una tienda pública ni contiene código, bases, accesos o documentos comerciales completos. Los esquemas de la VPS describen el entorno histórico; las pruebas locales no acreditan cobros reales. [Aviso académico](AVISO_ACADEMICO.md).
