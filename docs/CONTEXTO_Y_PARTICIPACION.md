@@ -38,6 +38,8 @@ Los avances me asignan desarrollo/administración y mantenimiento web. El segund
 
 La colaboración del equipo incluyó contenido, productos, precios, diseño, conocimiento de la impresora y pruebas. Mi intervención en el diseño no sustituye los roles de los demás. La idea y la realización se mantienen como trabajo grupal.
 
+Dos ejemplos de decisiones que guié fueron separar la estimación automática de la propuesta revisada por el equipo y ajustar la experiencia móvil del catálogo y de la cuenta.
+
 ## Acompañamiento e IA
 
 Código y parte de las configuraciones tuvieron asistencia importante de IA. Mi aporte incluyó definir necesidades, dirigir la presentación, revisar el funcionamiento y solicitar ajustes. La recuperación y adaptación local también fueron asistidas.

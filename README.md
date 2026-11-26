@@ -68,9 +68,10 @@ flowchart TD
     B -->|Catálogo| C["Producto y opciones"]
     B -->|Modelo personalizado| D["Modelo 3D y estimación"]
     D --> E["Revisión y propuesta del equipo"]
-    E -->|Aprobación y aceptación| F["Carrito y pedido"]
+    E -->|Cliente acepta la propuesta| L["Iniciar sesión para comprar"]
+    L --> F["Carrito y pedido"]
     E -->|Ajustar solicitud| D
-    C --> F
+    C --> L
     F --> G["Integración de pago y confirmación"]
     G --> H["Documento y notificación"]
     H -. "Operación física propuesta" .-> I["Programar fabricación, revisar y entregar"]
@@ -78,7 +79,7 @@ flowchart TD
 
 Los documentos de clase relacionan compra digital con fabricación bajo demanda, calidad y entrega. Esa última etapa es el **proceso operativo propuesto**; las capturas no prueban entregas comerciales. La estimación tampoco sustituye la aprobación del equipo.
 
-![Cotizador integrado: visor y opciones de impresión](assets/03-cotizador.jpg)
+[Ver el cotizador con un modelo cargado y la estimación](docs/RECORRIDO_VISUAL.md#11-cotizador-3d).
 
 ## Mi participación y lo que aprendí
 
@@ -130,8 +131,21 @@ El grupo final es **`oceanprint-local`**: tienda en el puerto **8084** y correo 
 
 ## Recorrido visual
 
-La galería reúne **once capturas de la misma demo del repositorio privado**: inicio y categorías, catálogo, Sobre nosotros, Blog, Contacto, perfil, carrito, cotizador, confirmación y correo. Se conserva la identidad original y se utilizan operaciones de prueba.
+La galería reúne **14 capturas renovadas el 26/11/2026** de la demo final que corresponde a la implementación privada verificada. Incluye inicio y categorías, catálogo, contenido, cuenta, carrito, checkout, cotizador, seguimiento del cliente, administración, pedido y correo.
 
-[Ver las once capturas explicadas](docs/RECORRIDO_VISUAL.md).
+[Ver las 14 capturas explicadas](docs/RECORRIDO_VISUAL.md).
+
+## Qué quedó funcionando en la demostración
+
+| Recorrido | Resultado de la prueba local |
+| --- | --- |
+| Catálogo y carrito | Búsqueda, opciones del producto, variantes y actualización de cantidades |
+| Compra | Pedidos con envío y recogida en Procesando, sin cobro real |
+| Solicitud personalizada | STL, visor, estimación, envío al equipo y seguimiento desde la cuenta |
+| Revisión | Aprobación desde administración y notificación al cliente |
+| Comunicación | Consulta de contacto, correos de pedido y factura PDF en Mailpit |
+| Conservación | Instalación limpia con contenido visual seleccionado y cuentas ficticias, sin importar accesos o pedidos históricos |
+
+La estimación de ejemplo fue de **$3.60 para 15 copias** de un cubo sintético. Es una comprobación del flujo técnico, no un resultado comercial ni una tarifa vigente. [Validación y alcance](docs/EVIDENCIA_Y_ESTADO.md).
 
 > **Caso académico y documental.** Este repositorio no opera una tienda pública ni contiene código, bases, accesos o documentos comerciales completos. Los esquemas de la VPS describen el entorno histórico; las pruebas locales no acreditan cobros reales. [Aviso académico](AVISO_ACADEMICO.md).

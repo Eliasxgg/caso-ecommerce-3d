@@ -48,6 +48,10 @@ El navegador no accedía directamente a MariaDB, Redis o al backend de modelos. 
 
 La tienda tenía redes para datos, acceso web y comunicación privada con el cotizador. MariaDB y Redis estaban en la red interna; el backend de modelos se relacionaba con WordPress mediante una red privada. Se omiten direcciones y secretos de conexión.
 
+### Plugins relevantes
+
+Además de WooCommerce y del cotizador propio, el sitio usaba Redis Object Cache para la caché de objetos, Fluent SMTP para correo, PDF Invoices & Packing Slips para documentos de pedido y Converter for Media para optimizar imágenes. Rank Math generaba el sitemap y gestionaba metadatos. Site Kit conectaba los informes de Google y la integración de Analytics para WooCommerce aportaba el etiquetado de la tienda.
+
 ### Protección por capas
 
 | Capa | Configuración documentada | Aprendizaje |
@@ -113,3 +117,7 @@ El grupo final es **`oceanprint-local`**: tienda **localhost:8084** y correo **l
 | Accesos | Configuración propia del servidor | Secretos locales nuevos |
 
 Las capturas conservan parte de la interfaz original. La adaptación no replica toda la protección perimetral ni la operación comercial. Los detalles de instalación, versiones y almacenamiento se documentan con la implementación privada.
+
+## Validación de la adaptación
+
+La distribución local se comprobó desde una instalación limpia y se contrastó su código con los archivos conservados en privado. Conserva la presentación del sitio, sin importar el SQL ni las cuentas históricas. Se revisaron recursos, cabecera, footer, checkout adaptable y funcionamiento de variantes. Las conexiones externas de pago y correo se sustituyen por la pasarela local y Mailpit. [Estado y alcance de las pruebas](EVIDENCIA_Y_ESTADO.md).

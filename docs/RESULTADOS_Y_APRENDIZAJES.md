@@ -6,6 +6,10 @@ El resultado tecnológico fue una tienda académica desplegada en VPS, con catá
 
 La formulación aportó otra perspectiva: cada función debía relacionarse con información que necesita el cliente o con una actividad del equipo. Una tienda también requiere pensar en solicitudes, confirmaciones, comunicación, producción y seguimiento.
 
+## Evidencia de la demo
+
+Las capturas documentan una estimación para un cubo de prueba, un pedido simulado con desglose y acceso al PDF, y notificaciones recibidas por Mailpit. Son pruebas separadas. [Ver recorrido visual](RECORRIDO_VISUAL.md).
+
 ## Aprendizajes del entorno original
 
 | Área | Qué aprendí a relacionar | Aplicación |
@@ -57,7 +61,7 @@ Las responsabilidades previstas y las metas financieras se mantienen como planif
 ## Mejoras para una siguiente etapa
 
 - **Operación:** documentar conexiones, mantenimiento y responsables para reducir dependencia de configuraciones recordadas de memoria.
-- **Continuidad:** ensayar una restauración completa en un entorno aislado, además de comprobar archivos y bases individuales.
+- **Continuidad:** repetir la recuperación desde copias externas y documentar un futuro despliegue, además de la instalación aislada ya comprobada en local.
 - **Experiencia:** aclarar qué necesita aprobación y cuál es el siguiente paso del cliente.
 - **Seguimiento:** relacionar el recorrido con pedidos cuando exista una operación con datos propios, respetando privacidad y consentimiento.
 - **Producción:** contrastar estimaciones con resultados físicos antes de ajustar condiciones comerciales.
@@ -68,4 +72,6 @@ Son propuestas, no mejoras comerciales ya medidas.
 
 La adaptación permite revisar catálogo, cotizador, solicitud, pedido simulado, PDF y correo interno desde una PC. Reemplaza pago y SMTP externos por servicios de prueba y utiliza datos ficticios.
 
-Recuperación y pruebas fueron asistidas por IA. Las capturas del 25/11/2026 proceden de la misma versión local distribuida en el repositorio privado, con presentación original recuperada. No acreditan VPS activa, cobros, entregas ni reproducción completa de la infraestructura perimetral en Windows.
+Recuperación y pruebas fueron asistidas por IA. Las 14 capturas renovadas el 26/11/2026 proceden de la demo final que corresponde a la implementación privada verificada, con presentación original recuperada. No acreditan VPS activa, cobros, entregas ni reproducción completa de la infraestructura perimetral en Windows.
+
+Se comprobaron compra con envío y recogida, variantes, solicitud y aprobación administrativa, contacto, documentos y SMTP local. Estas comprobaciones permiten explicar la relación entre servicios y estados; no se presentan como nuevas ventas ni como desarrollo manual individual. [Evidencia y estado](EVIDENCIA_Y_ESTADO.md).

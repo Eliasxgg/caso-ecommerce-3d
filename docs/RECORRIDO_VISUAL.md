@@ -1,127 +1,162 @@
 # Recorrido visual de OceanPrint3D
 
-**Once capturas de la misma versión local que se distribuye en el repositorio privado**, tomadas el 25/11/2026. La demo conserva el diseño y el contenido visual del sitio original: logo, colores, menús, imágenes y páginas. Los clientes, solicitudes y pedidos utilizados en estas pruebas son ficticios.
+**14 capturas reales, renovadas el 26/11/2026**, tomadas de la demo final de Docker que corresponde a la implementación privada verificada. Conservan la identidad del sitio original y muestran clientes, solicitudes y pedidos ficticios. No son maquetas.
 
-La VPS sigue siendo la referencia arquitectónica del caso. Estas imágenes muestran su adaptación local, no un despliegue actualmente activo en Internet.
+La arquitectura original en VPS sigue siendo la referencia del proyecto. Estas imágenes muestran la adaptación local, con pago simulado y correo interno. El logo de Wompi conserva la referencia visual del diseño; no significa que la demo haga cobros.
 
 ## Tienda y contenido
 
 ### 1. Inicio
 
-La cabecera, el logo y la impresora del hero recuperan la identidad original. El aviso superior identifica la demostración académica.
+La cabecera, el logo y la impresora presentan la identidad de OceanPrint3D. El aviso superior identifica el entorno académico.
 
-![Inicio de la misma demo local del repositorio privado](../assets/01-inicio.jpg)
+![Inicio de OceanPrint3D con la impresora y la cabecera original](../assets/01-inicio.jpg)
 
-### 2. Categorías y secciones del inicio
+### 2. Categorías
 
-La portada continúa con categorías, productos, guías y comunidad. Las imágenes conservan el diseño del proyecto, en lugar de sustituirlo por figuras genéricas.
+La portada organiza accesos a familias de productos y a las solicitudes personalizadas. Las imágenes y la paleta pertenecen a la presentación recuperada del proyecto.
 
 <details>
-<summary>Ver el inicio completo, con categorías y sus imágenes</summary>
+<summary>Ver captura: Categorías</summary>
 
-![Inicio completo con categorías y secciones](../assets/06-inicio-categorias.jpg)
+![Categorías y acceso al cotizador de impresión 3D](../assets/06-inicio-categorias.jpg)
 
 </details>
 
 ### 3. Catálogo
 
-Presenta productos, imágenes, categorías, búsqueda, ordenación y filtros de precio. La copia conserva el catálogo académico y sus variantes; el producto técnico del cotizador permanece oculto.
+Búsqueda, categorías, ordenación, precios y filtros ayudan a explorar la tienda. Se conservan 21 productos visibles y sus variantes; el producto interno del cotizador permanece oculto. Marcas y personajes son material del prototipo académico, sin afiliación ni oferta comercial vigente.
 
 <details>
-<summary>Ver el catálogo y sus filtros</summary>
+<summary>Ver captura: Catálogo</summary>
 
-![Catálogo original recuperado en la distribución local](../assets/02-catalogo.jpg)
+![Selección del catálogo académico con fotografías, precios y opciones](../assets/02-catalogo.jpg)
 
 </details>
 
-Los precios visibles son provisionales del prototipo. Marcas y personajes forman parte del material académico conservado y no implican afiliación ni una oferta comercial de este repositorio.
-
 ### 4. Sobre nosotros
 
-La página reúne la presentación, el propósito y la explicación del proceso. Su contenido pertenece a la propuesta académica; no se utiliza como prueba de ventas o fabricación comercial realizada.
+La presentación explica el propósito y el proceso propuesto. Su contenido forma parte del ejercicio académico; no acredita fabricación o entregas comerciales.
 
 <details>
-<summary>Ver Sobre nosotros</summary>
+<summary>Ver captura: Sobre nosotros</summary>
 
-![Sobre OceanPrint3D con sus imágenes y estructura original](../assets/08-sobre-nosotros.jpg)
+![Presentación de OceanPrint3D y su proceso propuesto](../assets/08-sobre-nosotros.jpg)
 
 </details>
 
 ### 5. Blog
 
-Las guías conservan sus imágenes, categorías y presentación editorial. Permiten mostrar cómo se organizó contenido de apoyo a la tienda.
+Las guías organizan información sobre materiales, uso y elección de las piezas. La estructura editorial conecta ese contenido con el catálogo y la atención.
 
 <details>
-<summary>Ver el blog y las guías recuperadas</summary>
+<summary>Ver captura: Blog</summary>
 
-![Blog de OceanPrint3D](../assets/09-blog.jpg)
+![Blog con imágenes y guías de impresión 3D](../assets/09-blog.jpg)
 
 </details>
 
 ### 6. Contacto
 
-La página mantiene su diseño, tarjetas y formulario. Los contactos se sustituyeron por datos de demostración; las pruebas locales no envían correo a Internet.
-
-![Página de contacto con datos de demostración](../assets/07-contacto.jpg)
-
-## Cuenta y recorrido de compra
-
-### 7. Perfil del cliente
-
-Se inició sesión con una cuenta ficticia y se consultaron sus datos, avatar y navegación de cuenta. No se muestran usuarios del sitio histórico.
+La página reúne información y un formulario. En local se usan contactos de demostración y los mensajes se reciben en Mailpit. Se comprobó el envío de una consulta ficticia desde la interfaz.
 
 <details>
-<summary>Ver el perfil de Cliente Demo</summary>
+<summary>Ver captura: Contacto</summary>
 
-![Perfil con nombre y correo ficticios](../assets/10-perfil.jpg)
+![Contacto y formulario con datos de demostración](../assets/07-contacto.jpg)
 
 </details>
 
-### 8. Carrito con un producto añadido
+## Cuenta y compra
 
-El producto se añadió desde el catálogo. La pantalla relaciona pieza, cantidad, subtotal, envío de prueba y total antes de continuar.
+### 7. Cuenta y pedidos
+
+El cliente ficticio consulta sus pedidos y accede a cotizaciones, direcciones y datos. Los pedidos #1322 y #1323 corresponden a pruebas con envío y recogida; ambos quedaron en Procesando. La compra requiere iniciar sesión.
 
 <details>
-<summary>Ver el carrito de la prueba</summary>
+<summary>Ver captura: Cuenta y pedidos</summary>
 
-![Carrito de Cliente Demo con una pieza añadida](../assets/11-carrito.jpg)
+![Cuenta de Cliente Demo con sus pedidos simulados](../assets/10-perfil.jpg)
 
 </details>
 
-### 9. Cotizador 3D
+### 8. Carrito
 
-Se cargó un STL desde el navegador. El visor y las opciones de impresión calcularon una estimación para **15 copias: $3.60**, **54.4 g** y **2 h 34 min** con los parámetros de prueba. Se comprobó el envío de la solicitud al equipo.
+La pantalla relaciona producto, cantidad, subtotal, entrega y total. La prueba mostrada tiene $5.00 en piezas, $3.00 de envío y $8.00 de total. También se probaron selección de variante, cambio de cantidad y retirada del artículo.
 
 <details>
-<summary>Ver el modelo, la estimación y los controles del cotizador</summary>
+<summary>Ver captura: Carrito</summary>
 
-![Cotizador de la misma versión local, con modelo geométrico de prueba](../assets/03-cotizador.jpg)
+![Carrito con una pieza del catálogo y envío de prueba](../assets/11-carrito.jpg)
 
 </details>
 
-La estimación es preliminar y requiere revisión. El modelo es un cubo sintético; su importe no es una tarifa comercial.
+### 9. Checkout
+
+Contacto, entrega y pago se presentan junto al resumen del pedido. La demo ofrece envío o recogida y usa una pasarela de prueba sin tarjetas ni cobro. La distribución se adapta al ancho de pantalla.
+
+<details>
+<summary>Ver captura: Checkout</summary>
+
+![Checkout con logo original de Wompi y pago académico simulado](../assets/12-checkout.jpg)
+
+</details>
 
 ### 10. Pedido confirmado
 
-Se completó el checkout de bloques con el cliente ficticio y la pasarela local. El pedido **#1288** llegó a **Procesando**, sin tarjeta ni cobro real.
+El pedido #1322 llegó a Procesando después del checkout con envío. El encuadre del recibo muestra la pieza, el importe, el costo de envío y el acceso a su documento. Confirmar un pedido simulado no acredita fabricación ni venta real.
 
 <details>
-<summary>Ver la confirmación completa del pedido simulado</summary>
+<summary>Ver captura: Pedido confirmado</summary>
 
-![Confirmación del pedido de prueba de la versión final](../assets/04-pedido.jpg)
+![Confirmación del pedido ficticio 1322 por un total de 8 dólares](../assets/04-pedido.jpg)
 
 </details>
 
-La operación física de fabricación, control de calidad y entrega es parte del proceso propuesto, no algo acreditado por el recibo.
+## Cotización, administración y comunicación
 
-## Comunicación y documentos
+### 11. Cotizador 3D
 
-### 11. Notificaciones y PDF en Mailpit
+Se cargó desde el navegador un STL sintético de 20 × 20 × 20 mm. Con PLA, capa de 0.20 mm, relleno del 15% y 15 copias, la estimación fue **$3.60**, **54.4 g** y **2 h 34 min**. El visor permite explorar el modelo; el servicio especializado realiza el cálculo. Son valores de prueba y requieren revisión humana.
 
-La misma demo generó la solicitud, el aviso de pedido y la confirmación del cliente con factura adjunta. El buzón conserva también mensajes ficticios de pruebas anteriores.
+<details>
+<summary>Ver captura: Cotizador 3D</summary>
 
-![Mensajes de la solicitud y el pedido de prueba en Mailpit](../assets/05-smtp.jpg)
+![Visor 3D y estimación preliminar de 15 copias del cubo de prueba](../assets/03-cotizador.jpg)
 
-En la VPS se trabajó con Fluent SMTP/Brevo. Aquí Mailpit recibe los mensajes dentro de Docker; no representa un panel de Brevo ni entrega externa.
+</details>
 
-[Arquitectura original y local](ARQUITECTURA.md) · [Contexto y participación](CONTEXTO_Y_PARTICIPACION.md) · [Aprendizajes](RESULTADOS_Y_APRENDIZAJES.md)
+### 12. Seguimiento del cliente
+
+La solicitud enviada al equipo aparece en la cuenta con su referencia, estimación y estado. La captura muestra una solicitud pendiente de revisión: enviar el modelo no confirma fabricación ni pago.
+
+<details>
+<summary>Ver captura: Seguimiento del cliente</summary>
+
+![Historial de cotizaciones del cliente con una solicitud pendiente](../assets/14-solicitudes-cliente.jpg)
+
+</details>
+
+### 13. Administración de solicitudes
+
+El panel reúne solicitudes, estados, estimaciones y filtros para el equipo. La captura corresponde a la misma solicitud del cliente. También se verificó la aprobación administrativa con su notificación por correo.
+
+<details>
+<summary>Ver captura: Administración de solicitudes</summary>
+
+![Panel de WordPress con seguimiento de solicitudes del cotizador](../assets/13-administracion.jpg)
+
+</details>
+
+### 14. Notificaciones y documentos
+
+Mailpit recibió la solicitud, aprobaciones, avisos de pedido y confirmaciones de cliente de las pruebas. Los correos de pedido incluyen factura PDF adjunta. En la VPS se utilizaban Fluent SMTP y Brevo; aquí el buzón permanece dentro de Docker, sin entrega a Internet.
+
+<details>
+<summary>Ver captura: Notificaciones y documentos</summary>
+
+![Buzón SMTP local con notificaciones ficticias de solicitudes y pedidos](../assets/05-smtp.jpg)
+
+</details>
+
+[Arquitectura original y local](ARQUITECTURA.md) · [Contexto y participación](CONTEXTO_Y_PARTICIPACION.md) · [Resultados y aprendizajes](RESULTADOS_Y_APRENDIZAJES.md) · [Validación y estado](EVIDENCIA_Y_ESTADO.md)
